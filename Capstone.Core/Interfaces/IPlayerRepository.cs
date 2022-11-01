@@ -2,7 +2,7 @@
 
 namespace Capstone.Core.Interfaces
 {
-    public interface IPlayerRepositry: IRepository<Player>
+    public interface IPlayerRepository: IRepository<Player>
     {
         
     }

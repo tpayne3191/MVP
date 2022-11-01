@@ -1,6 +1,6 @@
 ﻿namespace Capstone.Core.Interfaces
 {
-    public interface ICharacterWeaponRepository: IPlayerRepositry
+    public interface ICharacterWeaponRepository: IPlayerRepository
     {
            
     }
