@@ -1,13 +1,7 @@
 
 namespace Capstone.Core.Entities
 {
-    /**
-     * <summary>
-     *      Summary:
-     *      Class to define the weapons object
-     * </summary>
-     */
-    public class Weapons
+    public class Weapon
     {
         public int id { get; set; }
         public string Name { get; set; }
