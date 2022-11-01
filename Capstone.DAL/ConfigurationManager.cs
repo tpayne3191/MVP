@@ -17,7 +17,7 @@ namespace Capstone.DAL
             var config = builder.Build();
 
             // Update DB name if name changes in production
-            var connectionString = config["ConnectionStrings:CharacterManager"];
+            var connectionString = config["ConnectionStrings:CampaignManager_DB"];
 
             var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseSqlServer(connectionString)
@@ -35,7 +35,7 @@ namespace Capstone.DAL
             var config = builder.Build();
 
             // Update DB name if name changes in production
-            var connectionString = config["ConnectionStrings:CharacterManager"];
+            var connectionString = config["ConnectionStrings:CampaignManager_DB"];
 
             return connectionString;
         }
