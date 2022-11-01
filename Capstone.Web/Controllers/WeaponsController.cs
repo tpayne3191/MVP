@@ -10,17 +10,17 @@ namespace Capstone.Web.Controllers
     [ApiController]
     public class WeaponsController : ControllerBase
     {
-        private readonly IWeaponRepository _WeaponRepository;
+        private readonly IWeaponRepository _weaponRepository;
 
-        public WeaponsController(IWeaponRepository WeaponRepository)
+        public WeaponsController(IWeaponRepository weaponRepository)
         {
-            _WeaponRepository = WeaponRepository;
+            _weaponRepository = weaponRepository;
         }
 
         [HttpGet]
         public IActionResult List()
         {
-            var result = _WeaponRepository.ReadAll();
+            var result = _weaponRepository.ReadAll();
 
             if (result.Success)
             {
@@ -33,7 +33,7 @@ namespace Capstone.Web.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result = _WeaponRepository.ReadById(id);
+            var result = _weaponRepository.ReadById(id);
 
             if (result.Success)
             {
@@ -47,7 +47,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Add(Weapon model)
         {
-            var result = _WeaponRepository.Create(model);
+            var result = _weaponRepository.Create(model);
 
             if (result.Success)
             {
@@ -61,7 +61,7 @@ namespace Capstone.Web.Controllers
         [HttpPut]
         public IActionResult Edit(Weapon model)
         {
-            var result = _WeaponRepository.Update(model);
+            var result = _weaponRepository.Update(model);
 
             if (result.Success)
             {
@@ -75,7 +75,7 @@ namespace Capstone.Web.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = _WeaponRepository.Delete(id);
+            var result = _weaponRepository.Delete(id);
 
             if (result.Success)
             {
