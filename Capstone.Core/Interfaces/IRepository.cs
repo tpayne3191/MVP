@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Capstone.Core;
 
 public class IRepository
 {
