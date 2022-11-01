@@ -1,8 +1,9 @@
 ﻿using System;
-
-public class IRepository
+using System.Collections.Generic;
+using Capstone.Core;
+namespace Capstone.Core.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> 
     {
         Result<T> Create(T model);
         Result<List<T>> ReadAll();
