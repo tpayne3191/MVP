@@ -1,16 +1,105 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Capstone.Core.Entities;
+using Capstone.Core.Interfaces;
+using Capstone.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Capstone.Web.Controllers
 {
-    public class CampaignsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CampaignsController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly ICampaignRepository _campaignRepository;
+
+        public CampaignsController(ICampaignRepository campaignRepository)
         {
-            return View();
+            _campaignRepository = campaignRepository;
+        }
+
+        [HttpGet]
+        public IActionResult List()
+        {
+            var result = _campaignRepository.ReadAll();
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var result = _campaignRepository.ReadById(id);
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+
+            return BadRequest(result.Message);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Add(CampaignModel model)
+        {
+            Campaign campaign = new Campaign
+            {
+                CampaignId = model.CampaignId,
+                Name = model.Name,
+                DateStarted = model.DateStarted,
+                DateEnded = model.DateEnded
+            };
+
+            var result = _campaignRepository.Create(campaign);
+
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+
+            return BadRequest(result.Message);
+        }
+
+        [Authorize]
+        [HttpPut]
+        public IActionResult Edit(CampaignModel model)
+        {
+            Campaign campaign = new Campaign()
+            {
+                CampaignId = model.CampaignId,
+                Name = model.Name,
+                DateStarted = model.DateStarted,
+                DateEnded = model.DateEnded
+            };
+
+            var result = _campaignRepository.Update(campaign);
+
+            if (result.Success)
+            {
+                return Ok();
+            }
+
+            return BadRequest(result.Message);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var result = _campaignRepository.Delete(id);
+
+            if (result.Success)
+            {
+                return Ok();
+            }
+
+            return BadRequest(result.Message);
         }
     }
 }
