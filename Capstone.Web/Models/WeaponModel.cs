@@ -9,7 +9,9 @@ namespace Capstone.Web.Models
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        [Required]
         public int Damage { get; set; }
+        [Required]
         public int Range { get; set; }
         [Required]
         [MaxLength(50)]
