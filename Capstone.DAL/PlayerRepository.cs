@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.DAL
 {
-    public class PlayerRepository
+    public class PlayerRepository : IRepository
     {
     }
 }
