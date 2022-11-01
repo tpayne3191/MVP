@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Capstone.Core;
 using Capstone.Core.Entities;
@@ -9,29 +10,90 @@ namespace Capstone.DAL
 {
     public class PlayerRepository : IPlayerRepository
     {
-        public Result<Player> Create(Player model)
+        private AppDbContext _context;
+
+        public PlayerRepository(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public Result<Player> Create(Player Player)
+        {
+            try
+            {
+                _context.Player.Add(Player);
+                _context.SaveChanges();
+                return new Result<Player>() { Success = true, Data = Player };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public Result<List<Player>> ReadAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _context.Player.ToList();
+                return new Result<List<Player>>() { Success = true, Data = result };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public Result<Player> ReadById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = _context.Player.FirstOrDefault(
+                    i => i.PlayerId == id);
+                return new Result<Player>() { Success = true, Data = result };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
-        public Result Update(Player model)
+        public Result Update(Player Player)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Player.Update(Player);
+                _context.SaveChanges();
+                return new Result<Player>() { Success = true };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public Result Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Result<Player> Player = ReadById(id);
+                if (Player != null)
+                {
+                    _context.Player.Remove(Player.Data);
+                    _context.SaveChanges();
+                }
+
+                return new Result<Player>() { Success = true };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
