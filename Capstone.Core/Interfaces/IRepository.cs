@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Capstone.Core;
 
 public class IRepository
+
+namespace Capstone.Core.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> 
     {
         Result<T> Create(T model);
         Result<List<T>> ReadAll();
