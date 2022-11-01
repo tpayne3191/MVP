@@ -10,7 +10,7 @@ create table Campaigns(
     id int primary key identity(1,1),
     [Name] varchar(50) not null,
     DateStarted date not null,
-    DateEnded date not null
+    DateEnded date
 );
 
 create table Players(
@@ -26,8 +26,7 @@ create table Weapons(
     [Name] varchar(50),
     Damage int not null,
     [Range]int not null,
-    Email varchar(50) not null,
-    City varchar(50) not null,
+    [Description] varchar(50)
 );
 
 GO

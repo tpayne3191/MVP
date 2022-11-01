@@ -17,6 +17,7 @@ namespace Capstone.DAL
         }
 
         public DbSet<Campaign> Campaign { get; set; }
+        public DbSet<CharacterWeapon> CharacterWeapon { get; set; }
         public DbSet<Player> Player { get; set; }
         public DbSet<Character> Character { get; set; }
         public DbSet<Weapon> Weapon { get; set; }
