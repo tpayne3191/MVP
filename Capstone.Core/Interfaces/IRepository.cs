@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Capstone.Core;
+
 namespace Capstone.Core.Interfaces
 {
     public interface IRepository<T> 
