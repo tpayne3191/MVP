@@ -7,7 +7,7 @@ using Capstone.Core.Interfaces;
 
 namespace Capstone.DAL
 {
-    public class PlayerRepository : IPlayerRepositry
+    public class PlayerRepository : IPlayerRepository
     {
         public Result<Player> Create(Player model)
         {
