@@ -1,5 +1,6 @@
 ﻿using Capstone.Core.Entities;
 using Capstone.Core.Interfaces;
+using Capstone.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,9 +46,18 @@ namespace Capstone.Web.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add(Weapon model)
+        public IActionResult Add(WeaponModel model)
         {
-            var result = _weaponRepository.Create(model);
+            Weapon weapon = new Weapon()
+            {
+                id = model.id,
+                Name = model.Name,
+                Description = model.Description,
+                Damage = model.Damage,
+                Range = model.Range
+            };
+
+            var result = _weaponRepository.Create(weapon);
 
             if (result.Success)
             {
@@ -59,9 +69,18 @@ namespace Capstone.Web.Controllers
 
         [Authorize]
         [HttpPut]
-        public IActionResult Edit(Weapon model)
+        public IActionResult Edit(WeaponModel model)
         {
-            var result = _weaponRepository.Update(model);
+            Weapon weapon = new Weapon()
+            {
+                id = model.id,
+                Name = model.Name,
+                Description = model.Description,
+                Damage = model.Damage,
+                Range = model.Range
+            };
+
+            var result = _weaponRepository.Update(weapon);
 
             if (result.Success)
             {
