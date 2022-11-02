@@ -27,8 +27,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Player>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -41,8 +40,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<List<Player>>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -56,8 +54,8 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Player>() { Success = false, Data = null, Message = e.Message };
+
             }
         }
 
@@ -71,8 +69,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Player>() { Success = false, Message = e.Message };
             }
         }
 
@@ -91,8 +88,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Player>() { Success = false, Message = e.Message };
             }
         }
     }

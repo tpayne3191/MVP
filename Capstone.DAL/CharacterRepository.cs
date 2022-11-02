@@ -27,8 +27,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Character>() { Success = false, Data = null, Message = e.Message};
             }
         }
 
@@ -41,8 +40,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<List<Character>>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -56,23 +54,23 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Character>() { Success = false , Data = null, Message = e.Message };
+
             }
         }
 
-        public Result Update(Character Character)
+        public Result Update(Character character)
         {
             try
             {
-                _context.Character.Update(Character);
+                _context.Character.Update(character);
                 _context.SaveChanges();
                 return new Result<Character>() { Success = true };
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Character>() { Success = false, Message = e.Message };
+
             }
         }
 
@@ -91,8 +89,8 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Character>() { Success = false, Message = e.Message };
+
             }
         }
     }
