@@ -35,6 +35,7 @@ GO
 CREATE TABLE [Character](
     Id int primary key identity(1,1),
     PlayerId int not null,
+    [Name] varchar(50),
     CampaignId int not null,
     [Level] int not null default(1),
     ArmorClass int not null default(1),
