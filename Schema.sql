@@ -1,4 +1,4 @@
-﻿use master;
+use master;
 Drop database if exists CampaignManager_DB
 GO
 Create database CampaignManager_DB
@@ -10,24 +10,22 @@ create table Campaigns(
     id int primary key identity(1,1),
     [Name] varchar(50) not null,
     DateStarted date not null,
-    DateEnded date not null
+    DateEnded date null
 );
 
 create table Players(
     id int primary key identity(1,1),
-    [Name] varchar(50)not null,
-    Phone varchar(50),
-    Email varchar(50),
-    City varchar(50)
+    [Name] varchar(50) not null,
+    Phone varchar(50) null,
+    Email varchar(50) null,
+    City varchar(50) null
 );
 
 create table Weapons(
     id int primary key identity(1,1),
     [Name] varchar(50),
     Damage int not null,
-    [Range]int not null,
-    Email varchar(50) not null,
-    City varchar(50) not null,
+    [Range]int not null
 );
 
 GO
