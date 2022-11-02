@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32929.385
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone.Core", "Capstone.Core\Capstone.Core.csproj", "{C15034AF-AD7C-4320-B4C7-2AEABB99D690}"
 EndProject
@@ -11,10 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone.Web", "Capstone.We
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{0077B21E-1540-43B1-A6AC-E48D74976F7A}"
 	ProjectSection(SolutionItems) = preProject
+		DMLScript.sql = DMLScript.sql
 		Schema.sql = Schema.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone.DAL.Tests", "Tests\Capstone.DAL.Tests\Capstone.DAL.Tests.csproj", "{B61947C1-9554-474B-A1C5-D352C086828C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone.DAL.Tests", "Tests\Capstone.DAL.Tests\Capstone.DAL.Tests.csproj", "{B61947C1-9554-474B-A1C5-D352C086828C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
