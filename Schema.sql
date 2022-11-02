@@ -25,7 +25,8 @@ create table Weapons(
     id int primary key identity(1,1),
     [Name] varchar(50),
     Damage int not null,
-    [Range]int not null
+    [Range]int not null,
+    [Description] varchar(50)
 );
 
 GO
