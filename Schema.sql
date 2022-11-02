@@ -1,40 +1,42 @@
-use master;
-Drop database if exists CampaignManager_DB
-GO
-Create database CampaignManager_DB
+USE MASTER;
+
+DROP DATABASE IF EXISTS CampaignManager_DB
 GO
 
-Use CampaignManager_DB;
+CREATE DATABASE CampaignManager_DB
+GO
 
-create table Campaigns(
-    id int primary key identity(1,1),
+USE CampaignManager_DB;
+
+CREATE TABLE Campaign(
+    Id int primary key identity(1,1),
     [Name] varchar(50) not null,
     DateStarted date not null,
     DateEnded date null
 );
 
-create table Players(
-    id int primary key identity(1,1),
+CREATE TABLE Player(
+    Id int primary key identity(1,1),
     [Name] varchar(50) not null,
     Phone varchar(50) null,
     Email varchar(50) null,
     City varchar(50) null
 );
 
-create table Weapons(
-    id int primary key identity(1,1),
+CREATE TABLE Weapon(
+    Id int primary key identity(1,1),
     [Name] varchar(50),
     Damage int not null,
-    [Range]int not null,
-    [Description] varchar(50)
+    [Range] int not null,
+	[Description] varchar(100) not null
 );
 
 GO
-create table [Characters](
-    id int primary key identity(1,1),
+CREATE TABLE [Character](
+    Id int primary key identity(1,1),
     PlayerId int not null,
     CampaignId int not null,
-    [Level] int not null,
+    [Level] int not null default(1),
     ArmorClass int not null,
     HitPoints int not null,
     Strength int not null,
@@ -49,22 +51,22 @@ create table [Characters](
     [Image] varchar(250) not null
     constraint fk_Character__Players_PlayerId
         foreign key(PlayerId)
-        references Players(Id),
+        references Player(Id),
     constraint fk_Character__Campaigns_CampaignId
         foreign key(CampaignId)
-        references Campaigns(Id),
+        references Campaign(Id),
 );
 
-create table CharacterWeapons(
+CREATE TABLE CharacterWeapon(
     CharacterId int not null,
     WeaponId int not null,
     Quantity int not null default(1),
     constraint fk_CharacterWeapons__Characters_CharacterId
         foreign key(CharacterId)
-        references Characters(Id),
+        references Character(Id),
     constraint fk_CharacterWeapons__Weapons_WeaponId
         foreign key(WeaponId)
-        references Weapons(Id),
+        references Weapon(Id),
    constraint Pk_CharacterWeapon_CharacterId_WeaponId
         primary key(CharacterId, WeaponId)
 );

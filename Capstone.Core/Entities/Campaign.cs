@@ -7,12 +7,22 @@ namespace Capstone.Core.Entities
 {
     public class Campaign : IValidatableObject
     {
-        public int CampaignId { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(50, ErrorMessage = "Name cannot exceed 50 characters.")]
         public string Name { get; set; }
+
+        [Required]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DateStarted { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? DateEnded { get; set; }
+
+        // Child Connectors - Entity Framework
+        public List<Character> Characters { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
