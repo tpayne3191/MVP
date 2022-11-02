@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace Capstone.Core.Entities
 {
     public class Weapon
@@ -8,5 +10,6 @@ namespace Capstone.Core.Entities
         public int Damage { get; set; }
         public int Range { get; set; }
         public string Description { get; set; }
+        public List<Character> Characters { get; set; }
     }
 }

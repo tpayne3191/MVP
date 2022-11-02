@@ -17,13 +17,13 @@ namespace Capstone.DAL
             _context = context;
         }
 
-        public Result<Character> Create(Character Character)
+        public Result<Character> Create(Character character)
         {
             try
             {
-                _context.Character.Add(Character);
+                _context.Character.Add(character);
                 _context.SaveChanges();
-                return new Result<Character>() { Success = true, Data = Character };
+                return new Result<Character>() { Success = true, Data = character };
             }
             catch (Exception e)
             {
@@ -78,10 +78,10 @@ namespace Capstone.DAL
         {
             try
             {
-                Result<Character> Character = ReadById(id);
-                if (Character != null)
+                Result<Character> character = ReadById(id);
+                if (character != null)
                 {
-                    _context.Character.Remove(Character.Data);
+                    _context.Character.Remove(character.Data);
                     _context.SaveChanges();
                 }
 

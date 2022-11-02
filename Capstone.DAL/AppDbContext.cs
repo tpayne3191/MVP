@@ -8,6 +8,13 @@ namespace Capstone.DAL
 {
     public class AppDbContext : DbContext
     {
+
+        public DbSet<Campaign> Campaign { get; set; }
+        public DbSet<CharacterWeapon> CharacterWeapon { get; set; }
+        public DbSet<Player> Player { get; set; }
+        public DbSet<Character> Character { get; set; }
+        public DbSet<Weapon> Weapon { get; set; }
+
         public AppDbContext()
         {
         }
@@ -16,11 +23,17 @@ namespace Capstone.DAL
         {
         }
 
-        public DbSet<Campaign> Campaign { get; set; }
-        public DbSet<CharacterWeapon> CharacterWeapon { get; set; }
-        public DbSet<Player> Player { get; set; }
-        public DbSet<Character> Character { get; set; }
-        public DbSet<Weapon> Weapon { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CharacterWeapon>()
+                .HasKey(cw => new { cw.CharacterId, cw.WeaponId });
+
+            modelBuilder.Entity<Character>()
+                .HasMany(c => c.Weapons);
+
+            modelBuilder.Entity<Weapon>()
+                .HasMany(w => w.Characters);
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
