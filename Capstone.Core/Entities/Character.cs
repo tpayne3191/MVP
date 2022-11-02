@@ -27,7 +27,9 @@ namespace Capstone.Core.Entities
         public int Intelligence { get; set; }
         public int Wisdom { get; set; }
         public int Charisma { get; set; }
-
+        
+        // Entity Framework Connectors
         public List<CharacterWeapon> CharacterWeapons { get; set; }
+        public List<Weapon> Weapons { get; set; }
     }
 }

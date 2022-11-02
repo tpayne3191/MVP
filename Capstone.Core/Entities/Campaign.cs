@@ -9,7 +9,9 @@ namespace Capstone.Core.Entities
     {
         public int CampaignId { get; set; }
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime DateStarted { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? DateEnded { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

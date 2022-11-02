@@ -25,10 +25,9 @@ namespace Capstone.DAL
                 _context.SaveChanges();
                 return new Result<Weapon>() { Success = true, Data = Weapon };
             }
-            catch (Exception e)
+            catch (Exception e) 
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Weapon>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -41,8 +40,8 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<List<Weapon>>() { Success = false, Data = null, Message = e.Message };
+
             }
         }
 
@@ -56,8 +55,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Weapon>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -71,8 +69,8 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Weapon>() { Success = false, Message = e.Message };
+
             }
         }
 
@@ -91,8 +89,8 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Weapon>() { Success = false, Message = e.Message };
+
             }
         }
     }

@@ -27,8 +27,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Campaign>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -41,8 +40,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<List<Campaign>>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -56,8 +54,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Campaign>() { Success = false, Data = null, Message = e.Message };
             }
         }
 
@@ -71,8 +68,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Campaign>() { Success = false, Message = e.Message };
             }
         }
 
@@ -91,8 +87,7 @@ namespace Capstone.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                return new Result<Campaign>() { Success = false, Message = e.Message };
             }
         }
     }
