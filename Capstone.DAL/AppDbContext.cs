@@ -14,6 +14,7 @@ namespace Capstone.DAL
         public DbSet<Player> Player { get; set; }
         public DbSet<Character> Character { get; set; }
         public DbSet<Weapon> Weapon { get; set; }
+        public DbSet<LoginItem> LoginItem { get; set; }
 
         public AppDbContext()
         {
