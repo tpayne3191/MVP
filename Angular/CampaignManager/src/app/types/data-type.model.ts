@@ -1,4 +1,7 @@
 export enum DataType {
-  Courses = 'courses',
-  Students = 'students',
+  Campaign = 'campaign',
+  Character = 'character',
+  CharacterWeapon = 'characterWeapon',
+  Player = 'player',
+  Weapon = 'weapon'
 }
