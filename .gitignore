@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Angular/CampaignManager/.angular/cache/14.2.7/babel-webpack
+/Angular/CampaignManager/.angular/cache/14.2.7/angular-webpack/81eb928c1541f438d6a56783a3d69fe031e3ebb5
