@@ -49,7 +49,7 @@ namespace Capstone.DAL
             try
             {
                 var result = _context.Player.FirstOrDefault(
-                    i => i.PlayerId == id);
+                    i => i.Id == id);
                 return new Result<Player>() { Success = true, Data = result };
             }
             catch (Exception e)

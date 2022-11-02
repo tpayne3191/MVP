@@ -50,7 +50,7 @@ namespace Capstone.Web.Controllers
         {
             Campaign campaign = new Campaign
             {
-                CampaignId = model.CampaignId,
+                Id = model.CampaignId,
                 Name = model.Name,
                 DateStarted = model.DateStarted,
                 DateEnded = model.DateEnded
@@ -72,7 +72,7 @@ namespace Capstone.Web.Controllers
         {
             Campaign campaign = new Campaign()
             {
-                CampaignId = model.CampaignId,
+                Id = model.CampaignId,
                 Name = model.Name,
                 DateStarted = model.DateStarted,
                 DateEnded = model.DateEnded

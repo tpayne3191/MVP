@@ -50,7 +50,7 @@ namespace Capstone.Web.Controllers
         {
             Weapon weapon = new Weapon()
             {
-                id = model.id,
+                Id = model.id,
                 Name = model.Name,
                 Description = model.Description,
                 Damage = model.Damage,
@@ -73,7 +73,7 @@ namespace Capstone.Web.Controllers
         {
             Weapon weapon = new Weapon()
             {
-                id = model.id,
+                Id = model.id,
                 Name = model.Name,
                 Description = model.Description,
                 Damage = model.Damage,
