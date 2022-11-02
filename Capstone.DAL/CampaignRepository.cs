@@ -49,7 +49,7 @@ namespace Capstone.DAL
             try
             {
                 var result = _context.Campaign.FirstOrDefault(
-                    i => i.CampaignId == id);
+                    i => i.Id == id);
                 return new Result<Campaign>() { Success = true, Data = result };
             }
             catch (Exception e)

@@ -1,70 +1,72 @@
-use master;
-Drop database if exists CampaignManager_DB
-GO
-Create database CampaignManager_DB
+USE MASTER;
+
+DROP DATABASE IF EXISTS CampaignManager_DB
 GO
 
-Use CampaignManager_DB;
+CREATE DATABASE CampaignManager_DB
+GO
 
-create table Campaigns(
-    id int primary key identity(1,1),
+USE CampaignManager_DB;
+
+CREATE TABLE Campaign(
+    Id int primary key identity(1,1),
     [Name] varchar(50) not null,
     DateStarted date not null,
     DateEnded date null
 );
 
-create table Players(
-    id int primary key identity(1,1),
+CREATE TABLE Player(
+    Id int primary key identity(1,1),
     [Name] varchar(50) not null,
     Phone varchar(50) null,
     Email varchar(50) null,
     City varchar(50) null
 );
 
-create table Weapons(
-    id int primary key identity(1,1),
+CREATE TABLE Weapon(
+    Id int primary key identity(1,1),
     [Name] varchar(50),
-    Damage int not null,
-    [Range]int not null,
-    [Description] varchar(50)
+    Damage int not null default(4),
+    [Range] int not null,
+    [Description] varchar(100) not null
 );
 
 GO
-create table [Characters](
-    id int primary key identity(1,1),
+CREATE TABLE [Character](
+    Id int primary key identity(1,1),
     PlayerId int not null,
     CampaignId int not null,
-    [Level] int not null,
-    ArmorClass int not null,
-    HitPoints int not null,
-    Strength int not null,
-    Dexterity  int not null,
-    Constitution  int not null,
-    Intelligence  int not null,
-    Wisdom  int not null,
-    Charisma  int not null,
+    [Level] int not null default(1),
+    ArmorClass int not null default(1),
+    HitPoints int not null default(1),
+    Strength int not null default(1),
+    Dexterity  int not null default(1),
+    Constitution  int not null default(1),
+    Intelligence  int not null default(1),
+    Wisdom  int not null default(1),
+    Charisma  int not null default(1),
     Race varchar(50) not null,
     Alignment varchar(50) not null,
     Class varchar(50) not null,
     [Image] varchar(250) not null
-    constraint fk_Character__Players_PlayerId
+    constraint fk_Character_Player_PlayerId
         foreign key(PlayerId)
-        references Players(Id),
-    constraint fk_Character__Campaigns_CampaignId
+        references Player(Id),
+    constraint fk_Character_Campaign_CampaignId
         foreign key(CampaignId)
-        references Campaigns(Id),
+        references Campaign(Id),
 );
 
-create table CharacterWeapons(
+CREATE TABLE CharacterWeapon(
     CharacterId int not null,
     WeaponId int not null,
     Quantity int not null default(1),
-    constraint fk_CharacterWeapons__Characters_CharacterId
+    constraint fk_CharacterWeapon_Character_CharacterId
         foreign key(CharacterId)
-        references Characters(Id),
-    constraint fk_CharacterWeapons__Weapons_WeaponId
+        references Character(Id),
+    constraint fk_CharacterWeapon_Weapon_WeaponId
         foreign key(WeaponId)
-        references Weapons(Id),
-   constraint Pk_CharacterWeapon_CharacterId_WeaponId
+        references Weapon(Id),
+   constraint pk_CharacterWeapon_CharacterId_WeaponId
         primary key(CharacterId, WeaponId)
 );
