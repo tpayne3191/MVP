@@ -53,6 +53,7 @@ namespace Capstone.Web
             services.AddTransient<IPlayerRepository, PlayerRepository>();
             services.AddTransient<IWeaponRepository, WeaponRepository>();
             services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddTransient<IReportRepository, ReportRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
