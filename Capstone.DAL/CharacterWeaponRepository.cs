@@ -11,6 +11,11 @@ namespace Capstone.DAL
     {
         private AppDbContext _context;
 
+        public CharacterWeaponRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public Result Create(CharacterWeapon model)
         {
             try

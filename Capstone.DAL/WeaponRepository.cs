@@ -50,7 +50,7 @@ namespace Capstone.DAL
             try
             {
                 var result = _context.Weapon.FirstOrDefault(
-                    i => i.id == id);
+                    i => i.Id == id);
                 return new Result<Weapon>() { Success = true, Data = result };
             }
             catch (Exception e)

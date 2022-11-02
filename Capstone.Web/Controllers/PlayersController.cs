@@ -50,7 +50,7 @@ namespace Capstone.Web.Controllers
         {
             Player player = new Player
             {
-                PlayerId = model.PlayerId,
+                Id = model.PlayerId,
                 Name = model.Name,
                 Phone = model.Phone,
                 Email = model.Email,
@@ -73,7 +73,7 @@ namespace Capstone.Web.Controllers
         {
             Player player = new Player()
             {
-                PlayerId = model.PlayerId,
+                Id = model.PlayerId,
                 Name = model.Name,
                 Phone = model.Phone,
                 Email = model.Email,
