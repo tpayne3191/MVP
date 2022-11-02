@@ -8,6 +8,8 @@ namespace Capstone.DAL
 {
     public class ConfigurationManager
     {
+        private static string _authConnectionString;
+
         public static AppDbContext GetDbContext()
         {
             var builder = new ConfigurationBuilder();
@@ -38,6 +40,22 @@ namespace Capstone.DAL
             var connectionString = config["ConnectionStrings:CampaignManager_DB"];
 
             return connectionString;
+        }
+
+        public static string GetAuthConnectionstring()
+        {
+            if (string.IsNullOrEmpty(_authConnectionString))
+            {
+                var builder = new ConfigurationBuilder();
+
+                builder.AddUserSecrets<AppDbContext>();
+
+                var config = builder.Build();
+
+                _authConnectionString = config["AuthConnectionString:CampaignManagerLoginDB"];
+            }
+
+            return _authConnectionString;
         }
     }
 }
