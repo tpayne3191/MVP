@@ -44,6 +44,4 @@ INSERT INTO CharacterWeapon(CharacterId, WeaponId, Quantity)
 		('3', '2', '2'),
 		('4', '4', '2');
 
-
-
-
+SELECT * FROM Weapons

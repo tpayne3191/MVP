@@ -27,12 +27,6 @@ namespace Capstone.DAL
         {
             modelBuilder.Entity<CharacterWeapon>()
                 .HasKey(cw => new { cw.CharacterId, cw.WeaponId });
-
-            modelBuilder.Entity<Character>()
-                .HasMany(c => c.Weapons);
-
-            modelBuilder.Entity<Weapon>()
-                .HasMany(w => w.Characters);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)

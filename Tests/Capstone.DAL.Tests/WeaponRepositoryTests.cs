@@ -6,7 +6,7 @@ using System.Text;
 namespace Capstone.DAL.Tests
 {
     [TestFixture]
-    public class WeapoonRepositoryTests
+    public class WeaponRepositoryTests
     {
         [SetUp]
         public void Setup()
