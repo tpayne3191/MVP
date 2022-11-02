@@ -1,20 +1,12 @@
 USE MASTER;
 
-
-
 DROP DATABASE IF EXISTS CampaignManager_DB
 GO
-
-
 
 CREATE DATABASE CampaignManager_DB
 GO
 
-
-
 USE CampaignManager_DB;
-
-
 
 CREATE TABLE Campaign(
     Id int primary key identity(1,1),
@@ -22,8 +14,6 @@ CREATE TABLE Campaign(
     DateStarted date not null,
     DateEnded date null
 );
-
-
 
 CREATE TABLE Player(
     Id int primary key identity(1,1),
@@ -33,8 +23,6 @@ CREATE TABLE Player(
     City varchar(50) null
 );
 
-
-
 CREATE TABLE Weapon(
     Id int primary key identity(1,1),
     [Name] varchar(50),
@@ -42,8 +30,6 @@ CREATE TABLE Weapon(
     [Range] int not null,
     [Description] varchar(100) not null
 );
-
-
 
 GO
 CREATE TABLE [Character](
@@ -70,8 +56,6 @@ CREATE TABLE [Character](
         foreign key(CampaignId)
         references Campaign(Id),
 );
-
-
 
 CREATE TABLE CharacterWeapon(
     CharacterId int not null,
