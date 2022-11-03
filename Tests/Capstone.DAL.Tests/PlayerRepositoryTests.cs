@@ -74,11 +74,35 @@ namespace Capstone.DAL.Tests
         public void PlayerReadAllSuccessfully()
         {
             // Assign
+            Player player = new Player()
+            {
+                Name = "Ernest",
+                Email = "Ernest_C_King@Progressive.com",
+                City = "Colorado Springs",
+                Phone = "801-631-2160",
+                Characters = new List<Character>()
+            };
+            Result<List<Player>> expectedResult = new Result<List<Player>>
+            {
+                Message = null,
+                Success = true,
+                Data = new List<Player>() { player }
+            };
+            expectedResult.Data[0].Id = 1;
+            _playerRepository.Create(player);
+
 
             // Act
+            var actualResult = _playerRepository.ReadAll();
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+            Assert.AreEqual(expectedResult.Data[0].Id, actualResult.Data[0].Id);
+            Assert.AreEqual(expectedResult.Data[0].City, actualResult.Data[0].City);
+            Assert.AreEqual(expectedResult.Data[0].Name, actualResult.Data[0].Name);
+            Assert.AreEqual(expectedResult.Data[0].Phone, actualResult.Data[0].Phone);
+            Assert.AreEqual(expectedResult.Data[0].Email, actualResult.Data[0].Email);
         }
 
         [Test]
