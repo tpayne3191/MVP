@@ -16,6 +16,9 @@ namespace Capstone.Core.Entities
         public int Level { get; set; }
 
         [Required]
+        [MaxLength(50, ErrorMessage = "Race must be valid string between 0 - 50 characters.")]
+        public string Name { get; set; }
+        [Required]
         [Range(1, 49, ErrorMessage = "Armor Class cannot be less than 0 or greater than 49 (Highest Possible).")]
         public int ArmorClass { get; set; }
 
