@@ -9,7 +9,7 @@ namespace Capstone.Core.Interfaces
     
     public interface IReportRepository
     {
-        Result<List<MostCampaignsCompleted>> GetTopCampaigns();
-        Result<List<MostHitPoints>> GetTopHitPointCharacters();
+        Result<List<LongestCampaigns>> GetLongestCampaigns();
+        Result<List<LargestHealthPools>> GetCharactersByHealthPool();
     }
 }

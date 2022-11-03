@@ -6,8 +6,11 @@ namespace Capstone.Core.DTOs
 {
     public class LargestHealthPools
     {
-        public int CharacterId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public int AmountOfHitPoints { get; set; }
+        public int HitPoints { get; set; }
+        public int ArmorClass { get; set; }
+        public string Class { get; set; }
+        public string Alignment { get; set; }
     }
 }

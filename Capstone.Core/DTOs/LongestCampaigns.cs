@@ -6,9 +6,10 @@ namespace Capstone.Core.DTOs
 {
     public class LongestCampaigns
     {
-        public int CharacterId { get; set; }
+        public int Id { get; set; }
+        public int DateDiff { get; set; }
         public string Name { get; set; }
-        public int CompletedCampaignCount { get; set; }
-
+        public DateTime DateStarted { get; set; }
+        public DateTime DateEnded { get; set; }
     }
 }

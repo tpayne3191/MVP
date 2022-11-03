@@ -12,9 +12,9 @@ namespace Capstone.DAL
     public class ReportRepository : IReportRepository
     {
 
-        public Result<List<LongestCampaigns>> GetTopCampaigns()
+        public Result<List<LongestCampaigns>> GetLongestCampaigns()
         {
-            List<LongestCampaigns> campaignsCompleted = new List<LongestCampaigns>();
+            List<LongestCampaigns> longestCampaigns = new List<LongestCampaigns>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
                 var cmd = new SqlCommand("MostCampaignsCompleted", cn);
@@ -26,10 +26,15 @@ namespace Capstone.DAL
                 {
                     while (reader.Read())
                     {
-                        LongestCampaigns campaignCompleted = new LongestCampaigns();
-                        campaignCompleted.CompletedCampaignCount = (int)reader["CampaignsCompleted"];
-                        campaignCompleted.Name = reader["Name"].ToString();
-                        campaignsCompleted.Add(campaignCompleted);
+                        LongestCampaigns model = new LongestCampaigns
+                        {
+                            Id = (int)reader["Id"],
+                            DateDiff = (int)reader["DateDiff"],
+                            Name = reader["Name"].ToString(),
+                            DateStarted = (DateTime)reader["DateStarted"],
+                            DateEnded = (DateTime)reader["DateEnded"],
+                        };
+                        longestCampaigns.Add(model);
                     }
                 }
                 catch (Exception e)
@@ -38,12 +43,12 @@ namespace Capstone.DAL
                 }
             }
 
-            return new Result<List<LongestCampaigns>>() { Success = true, Data = campaignsCompleted };
+            return new Result<List<LongestCampaigns>>() { Success = true, Data = longestCampaigns };
         }
 
-        public Result<List<LargestHealthPools>> GetTopHitPointCharacters()
+        public Result<List<LargestHealthPools>> GetCharactersByHealthPool()
         {
-            List<LargestHealthPools> hitPoints = new List<LargestHealthPools>();
+            List<LargestHealthPools> characters = new List<LargestHealthPools>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
                 var cmd = new SqlCommand("MostHitPoints", cn);
@@ -56,10 +61,16 @@ namespace Capstone.DAL
                 {
                     while (reader.Read())
                     {
-                        LargestHealthPools hitPoint = new LargestHealthPools();
-                        hitPoint.AmountOfHitPoints = (int)reader["HitPoints"];
-                        hitPoint.Name = reader["Name"].ToString();
-                        hitPoints.Add(hitPoint);
+                        LargestHealthPools model = new LargestHealthPools
+                        {
+                            Id = (int)reader["Id"],
+                            HitPoints = (int)reader["HitPoints"],
+                            ArmorClass = (int)reader["ArmorClass"],
+                            Name = reader["Name"].ToString(),
+                            Class = reader["Class"].ToString(),
+                            Alignment = reader["Alignment"].ToString()
+                        };
+                        characters.Add(model);
                     }
 
                 }
@@ -69,7 +80,7 @@ namespace Capstone.DAL
                 }
             }
 
-            return new Result<List<LargestHealthPools>>() { Success = true, Data = hitPoints };
+            return new Result<List<LargestHealthPools>>() { Success = true, Data = characters };
         }
     }
 }
