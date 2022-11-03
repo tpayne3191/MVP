@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Capstone.DAL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -46,6 +47,17 @@ namespace Capstone.Web
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
+            //Whitelisting Angular
+            services.AddCors(options =>
+            {
+                options.AddPolicy("SpecificOriginsPolicyName", new CorsPolicyBuilder()
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .AllowAnyMethod()
+                    .Build());
+            });
+
             // Binding services
             services.AddDbContext<AppDbContext>();
             services.AddTransient<ICampaignRepository, CampaignRepository>();
@@ -72,6 +84,7 @@ namespace Capstone.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseCors("SpecificOriginsPolicyName");
             app.UseAuthentication();
             app.UseAuthorization();
 
