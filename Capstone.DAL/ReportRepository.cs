@@ -12,9 +12,9 @@ namespace Capstone.DAL
     public class ReportRepository : IReportRepository
     {
 
-        public Result<List<MostCampaignsCompleted>> GetTopCampaigns()
+        public Result<List<LongestCampaigns>> GetLongestCampaigns()
         {
-            List<MostCampaignsCompleted> campaignsCompleted = new List<MostCampaignsCompleted>();
+            List<LongestCampaigns> longestCampaigns = new List<LongestCampaigns>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
                 var cmd = new SqlCommand("MostCampaignsCompleted", cn);
@@ -26,24 +26,29 @@ namespace Capstone.DAL
                 {
                     while (reader.Read())
                     {
-                        MostCampaignsCompleted campaignCompleted = new MostCampaignsCompleted();
-                        campaignCompleted.CompletedCampaignCount = (int)reader["CampaignsCompleted"];
-                        campaignCompleted.Name = reader["Name"].ToString();
-                        campaignsCompleted.Add(campaignCompleted);
+                        LongestCampaigns model = new LongestCampaigns
+                        {
+                            Id = (int)reader["Id"],
+                            DateDiff = (int)reader["DateDiff"],
+                            Name = reader["Name"].ToString(),
+                            DateStarted = (DateTime)reader["DateStarted"],
+                            DateEnded = (DateTime)reader["DateEnded"],
+                        };
+                        longestCampaigns.Add(model);
                     }
                 }
                 catch (Exception e)
                 {
-                    return new Result<List<MostCampaignsCompleted>>() { Success = false, Data = null, Message = e.Message};
+                    return new Result<List<LongestCampaigns>>() { Success = false, Data = null, Message = e.Message};
                 }
             }
 
-            return new Result<List<MostCampaignsCompleted>>() { Success = true, Data = campaignsCompleted };
+            return new Result<List<LongestCampaigns>>() { Success = true, Data = longestCampaigns };
         }
 
-        public Result<List<MostHitPoints>> GetTopHitPointCharacters()
+        public Result<List<LargestHealthPools>> GetCharactersByHealthPool()
         {
-            List<MostHitPoints> hitPoints = new List<MostHitPoints>();
+            List<LargestHealthPools> characters = new List<LargestHealthPools>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
                 var cmd = new SqlCommand("MostHitPoints", cn);
@@ -56,20 +61,26 @@ namespace Capstone.DAL
                 {
                     while (reader.Read())
                     {
-                        MostHitPoints hitPoint = new MostHitPoints();
-                        hitPoint.AmountOfHitPoints = (int)reader["HitPoints"];
-                        hitPoint.Name = reader["Name"].ToString();
-                        hitPoints.Add(hitPoint);
+                        LargestHealthPools model = new LargestHealthPools
+                        {
+                            Id = (int)reader["Id"],
+                            HitPoints = (int)reader["HitPoints"],
+                            ArmorClass = (int)reader["ArmorClass"],
+                            Name = reader["Name"].ToString(),
+                            Class = reader["Class"].ToString(),
+                            Alignment = reader["Alignment"].ToString()
+                        };
+                        characters.Add(model);
                     }
 
                 }
                 catch (Exception e)
                 {
-                    return new Result<List<MostHitPoints>>() { Success = false, Data = null, Message = e.Message};
+                    return new Result<List<LargestHealthPools>>() { Success = false, Data = null, Message = e.Message};
                 }
             }
 
-            return new Result<List<MostHitPoints>>() { Success = true, Data = hitPoints };
+            return new Result<List<LargestHealthPools>>() { Success = true, Data = characters };
         }
     }
 }

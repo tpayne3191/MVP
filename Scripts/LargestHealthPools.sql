@@ -1,3 +1,5 @@
+USE CampaignManager_DB;
+
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -18,7 +20,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE MostCampaignsCompleted
+CREATE PROCEDURE LargestHealthPools 
 	-- Add the parameters for the stored procedure here
 	
 AS
@@ -28,9 +30,17 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT Top 3 count(c.DateStarted) as CampaignsCompleted, ch.[Name] from Campaign c
-		inner join [Character] ch on ch.CampaignId = c.id
-		where c.DateEnded is not null
-		Group by ch.[Name]
+	SELECT * FROM Character;
+	SELECT TOP (5) 
+		Id,
+		[Name],
+		MAX(HitPoints) AS HitPoints, 
+		ArmorClass,
+		Class, 
+		Alignment
+	FROM [Character] ch
+	GROUP BY [Name], Id, ArmorClass, Class, Alignment
+	ORDER BY MAX(HitPoints) DESC
 END
 GO
+
