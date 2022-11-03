@@ -9,6 +9,8 @@ import { WeaponComponent } from './weapon/weapon.component';
 import { WeaponTableComponent } from './weapon/weapon-table/weapon-table.component';
 import { WeaponTableRowComponent } from './weapon/weapon-table-row/weapon-table-row.component';
 import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.component';
+import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.c
     WeaponComponent,
     WeaponTableComponent,
     WeaponTableRowComponent,
-    WeaponDetailsComponent
+    WeaponDetailsComponent,
+    WeaponFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,

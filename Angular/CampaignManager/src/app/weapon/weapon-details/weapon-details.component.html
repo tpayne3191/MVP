@@ -1,1 +1,20 @@
-<p>weapon-details works!</p>
+<h1 class="d-flex justify-content-center mt-3">Weapons</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Weapon Name</th>
+      <th>Damage</th>
+      <th>Range</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let weapon of weapon.characterWeapons">
+        <td>{{ weapon.characterId }}</td>
+        <td>{{ weapon.weaponId }}</td>
+        <td>{{ weapon.quantity }}</td>
+      </tr>
+  </tbody>
+</table>
+<button (click)="goBack()" class="btn btn-primary">Back</button>

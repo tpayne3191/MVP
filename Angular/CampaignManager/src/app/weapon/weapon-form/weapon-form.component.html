@@ -1,0 +1,31 @@
+<form (ngSubmit)="handleSubmit()" *ngIf="weapons$ | async as weapons">
+  <div>
+    <label for="name">
+      <strong>
+        Weapon Name
+      </strong>
+    </label>
+    <input
+      [(ngModel)]="weaponModel.name"
+      type="text"
+      id="weaponName"
+      name="weaponName"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label for="price"><strong>
+      Credit Hours
+    </strong></label>
+    <input
+      type="number"
+      id="weaponDamage"
+      name="weaponDamage"
+      [(ngModel)]="weaponModel.damage"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>

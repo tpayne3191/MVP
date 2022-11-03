@@ -1,1 +1,12 @@
-<p>weapon-table-row works!</p>
+<td>
+  <a routerLink="/course-detail/{{weapon.id}}" class="text-decoration-none">
+    {{ weapon.name }}
+  </a>
+</td>
+<td>{{ weapon.damage }}</td>
+<td>{{ weapon.range }}</td>
+<td>{{ weapon.description }}</td>
+<td *ngIf="weapon.characterWeapons===undefined">0</td>
+<td *ngIf="weapon.characterWeapons!==undefined">{{ weapon.characterWeapons.length }}</td>
+<td><button (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
+<td><button (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button></td>
