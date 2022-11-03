@@ -143,23 +143,75 @@ namespace Capstone.DAL.Tests
         [Test]
         public void PlayerUpdateTestSuccessfully()
         {
-            // Assign
 
+            // Assign
+            Player player = new Player()
+            {
+                Name = "Ernest",
+                Email = "Ernest_C_King@Progressive.com",
+                City = "Colorado Springs",
+                Phone = "801-631-2160",
+                Characters = new List<Character>()
+            };
+            Result<Player> expectedResult = new Result<Player>
+            {
+                Message = null,
+                Success = true,
+                Data = player
+            };
+            expectedResult.Data.Id = 1;
+            _playerRepository.Create(player);
+            Player updatedPlayer = new Player()
+            {
+                City = player.City,
+                Email = player.Email,
+                Id = player.Id,
+                Name = player.Name + " King",
+                Phone = player.Phone
+            };
+            expectedResult.Data = updatedPlayer;
+            
             // Act
+            var actualResult = _playerRepository.Update(updatedPlayer);
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+            if (actualResult is Result<Player> playerResult)
+            {
+                Assert.AreEqual(expectedResult.Data.Id, playerResult.Data.Id);
+                Assert.AreEqual(expectedResult.Data.City, playerResult.Data.City);
+                Assert.AreEqual(expectedResult.Data.Name, playerResult.Data.Name);
+                Assert.AreEqual(expectedResult.Data.Phone, playerResult.Data.Phone);
+                Assert.AreEqual(expectedResult.Data.Email, playerResult.Data.Email);
+            }
         }
 
         [Test]
         public void PlayerDeleteTestSuccessfully()
         {
             // Assign
+            Player player = new Player()
+            {
+                Name = "Ernest",
+                Email = "Ernest_C_King@Progressive.com",
+                City = "Colorado Springs",
+                Phone = "801-631-2160",
+                Characters = new List<Character>()
+            };
+            Result expectedResult = new Result
+            {
+                Message = null,
+                Success = true
+            };
+            _playerRepository.Create(player);
 
             // Act
+            var actualResult = _playerRepository.Delete(1);
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
         }
     }
 }
