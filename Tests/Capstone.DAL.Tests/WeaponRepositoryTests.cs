@@ -110,33 +110,113 @@ namespace Capstone.DAL.Tests
         public void WeaponReadByIdTestSuccess()
         {
             // Assign
+            Weapon weapon = new Weapon()
+            {
+                Name = "Sword",
+                Description = "Excalibur",
+                Damage = 10005000,
+                Range = 800,
+                CharacterWeapons = new List<CharacterWeapon>()
+            };
+            Result<Weapon> expectedResult = new Result<Weapon>
+            {
+                Data = weapon,
+                Message = null,
+                Success = true
+            };
+            expectedResult.Data.Id = 1;
+            _weaponRepository.Create(weapon);
 
             // Act
+            var actualResult = _weaponRepository.ReadById(weapon.Id);
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+            if (actualResult is Result<Weapon> weaponResult)
+            {
+                Assert.AreEqual(expectedResult.Data.Id, weaponResult.Data.Id);
+                Assert.AreEqual(expectedResult.Data.CharacterWeapons, weaponResult.Data.CharacterWeapons);
+                Assert.AreEqual(expectedResult.Data.Damage, weaponResult.Data.Damage);
+                Assert.AreEqual(expectedResult.Data.Description, weaponResult.Data.Description);
+                Assert.AreEqual(expectedResult.Data.Name, weaponResult.Data.Name);
+                Assert.AreEqual(expectedResult.Data.Range, weaponResult.Data.Range);
+            }
         }
 
         [Test]
         public void WeaponUpdateTestSuccess()
         {
             // Assign
+            Weapon weapon = new Weapon()
+            {
+                Name = "Sword",
+                Description = "Excalibur",
+                Damage = 10005000,
+                Range = 800,
+                CharacterWeapons = new List<CharacterWeapon>()
+            };
+            _weaponRepository.Create(weapon);
+            Weapon updatedWeapon = new Weapon()
+            {
+                Id = 1,
+                Name = "Sword",
+                Description = "Excalibur",
+                Damage = 10,
+                Range = 800,
+                CharacterWeapons = new List<CharacterWeapon>()
+            };
+            Result<Weapon> expectedResult = new Result<Weapon>
+            {
+                Data = updatedWeapon,
+                Message = null,
+                Success = true
+            };
 
             // Act
+            var actualResult = _weaponRepository.Update(updatedWeapon);
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+            if (actualResult is Result<Weapon> weaponResult)
+            {
+                Assert.AreEqual(expectedResult.Data.Id, weaponResult.Data.Id);
+                Assert.AreEqual(expectedResult.Data.CharacterWeapons, weaponResult.Data.CharacterWeapons);
+                Assert.AreEqual(expectedResult.Data.Damage, weaponResult.Data.Damage);
+                Assert.AreEqual(expectedResult.Data.Description, weaponResult.Data.Description);
+                Assert.AreEqual(expectedResult.Data.Name, weaponResult.Data.Name);
+                Assert.AreEqual(expectedResult.Data.Range, weaponResult.Data.Range);
+            }
         }
 
         [Test]
         public void WeaponDeleteTestSuccess()
         {
             // Assign
+            Weapon weapon = new Weapon()
+            {
+                Name = "Sword",
+                Description = "Excalibur",
+                Damage = 10005000,
+                Range = 800,
+                CharacterWeapons = new List<CharacterWeapon>()
+            };
+            _weaponRepository.Create(weapon);
+            Result<Weapon> expectedResult = new Result<Weapon>
+            {
+                Data = weapon,
+                Message = null,
+                Success = true
+            };
+            expectedResult.Data.Id = 1;
 
             // Act
+            var actualResult = _weaponRepository.Delete(expectedResult.Data.Id);
 
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
         }
     }
 }
