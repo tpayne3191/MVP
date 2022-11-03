@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Core.DTOs
 {
-    public class MostHitPoints
+    public class LargestHealthPools
     {
         public int CharacterId { get; set; }
         public string Name { get; set; }

@@ -1,3 +1,5 @@
+USE CampaignManager_DB
+
 -- ================================================
 -- Template generated from Template Explorer using:
 -- Create Procedure (New Menu).SQL
@@ -18,7 +20,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE MostHitPoints 
+CREATE PROCEDURE LongestCampaigns
 	-- Add the parameters for the stored procedure here
 	
 AS
@@ -26,10 +28,16 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
+	
     -- Insert statements for procedure here
-	SELECT Top 5 Max(ch.HitPoints) as HitPoints, ch.[Name] from [Character] ch
-	Group by ch.[Name]
-	Order by Max(ch.HitPoints) desc
+	SELECT TOP (3)
+		Id,
+		[Name],
+		DateStarted, 
+		DateEnded, 
+		DATEDIFF(day, DateStarted, DateEnded) AS DateDiff
+	FROM Campaign c
+	ORDER BY DateDiff DESC
+		
 END
 GO
