@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CampaignService } from 'src/app/services/campaign.service';
-import Campaign from '../types/campaign.model';
+import Campaign from '../../types/campaign.model';
 
 @Component({
   selector: 'app-component-form',

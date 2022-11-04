@@ -1,13 +1,16 @@
 <div class="card" style="width: 18rem;">
-  <div class="card-body" *ngIf="campaigns$ | async as campaigns" id="campaign" >
-    <figure>
+  <div class="card-body campaignContainer" *ngIf="campaigns$ | async as campaigns" id="campaign" >
+    <div *ngFor="let campaign of campaigns" class="campaignCard">
+      <figure>
         <h3 class="card-title">{{campaign.name}} </h3>
       <h6>Characters</h6>
-      <h3>{{campaign.characters}} </h3>
+        <h3>{{campaign.characters}} </h3>
     </figure>
     <a routerLink = '/component-detail '>
     <button>Edit</button>
     </a>
     <button>Delete</button>
+    </div>
+
   </div>
 </div>

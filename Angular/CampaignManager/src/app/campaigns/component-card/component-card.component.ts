@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { CampaignService } from 'src/app/services/campaign.service';
-import Campaign from '../types/campaign.model';
-import { Operation } from '../types/operation.model';
+import Campaign from '../../types/campaign.model';
+import {Operation} from '../../types/operation.model';
+
 
 
 @Component({
