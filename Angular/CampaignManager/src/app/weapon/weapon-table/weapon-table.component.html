@@ -11,7 +11,6 @@
           <th>Damage</th>
           <th>Range</th>
           <th>Description</th>
-          <th>Character Weapons</th>
           <th></th>
           <th></th>
         </tr>
@@ -20,6 +19,8 @@
         <tr
           *ngFor="let weapon of weapons"
           app-weapon-table-row
+          [weapon]="weapon"
+          (clicked)="handleClicked($event)"
           >
           <td>{{weapon.id}}</td>
           <td>{{weapon.name}}</td>

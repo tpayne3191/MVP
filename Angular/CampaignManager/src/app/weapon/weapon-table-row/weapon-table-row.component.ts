@@ -3,7 +3,7 @@ import { Operation } from '../../types/operation.model';
 import Weapon from 'src/app/types/weapon.model';
 
 @Component({
-  selector: 'app-weapon-table-row',
+  selector: '[app-weapon-table-row]',
   templateUrl: './weapon-table-row.component.html',
   styleUrls: ['./weapon-table-row.component.css']
 })
