@@ -3,16 +3,14 @@
     <h1 class="d-flex justify-content-center mt-3">
       <p><i class=""></i>Weapons</p>
     </h1>
-    <table class="table table-success table-striped"  *ngIf="weapons$ | async as weapons" id="weaponTable">
+    <table class="table table-secondary table-striped table-hover"  *ngIf="weapons$ | async as weapons" id="weaponTable">
       <thead class="table-borderless">
         <tr>
           <th>Id</th>
           <th>Name</th>
           <th>Damage</th>
-          <th>Damage</th>
           <th>Range</th>
           <th>Description</th>
-          <th>Character Weapons</th>
           <th></th>
           <th></th>
         </tr>
@@ -21,6 +19,8 @@
         <tr
           *ngFor="let weapon of weapons"
           app-weapon-table-row
+          [weapon]="weapon"
+          (clicked)="handleClicked($event)"
           >
           <td>{{weapon.id}}</td>
           <td>{{weapon.name}}</td>
@@ -41,4 +41,3 @@
   ></app-weapon-form>
   </div>
 </div>
-

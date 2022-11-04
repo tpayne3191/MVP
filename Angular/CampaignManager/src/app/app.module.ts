@@ -16,6 +16,8 @@ import { PlayerDetailsComponent } from './player/player-details/player-details.c
 import { PlayerFormComponent } from './player/player-form/player-form.component';
 import { PlayerTableComponent } from './player/player-table/player-table.component';
 import { PlayerTableRowComponent } from './player/player-table-row/player-table-row.component';
+import { HomeComponent } from './home/home.component';
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PlayerTableRowComponent } from './player/player-table-row/player-table-
     PlayerFormComponent,
     PlayerTableComponent,
     PlayerTableRowComponent
+    HomeComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
