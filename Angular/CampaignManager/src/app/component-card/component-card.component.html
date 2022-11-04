@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body" *ngIf="campaigns$ | async as campaigns" id="campaign" >
+    <figure>
+        <h3 class="card-title">{{campaign.name}} </h3>
+      <h6>Characters</h6>
+      <h3>{{campaign.characters}} </h3>
+    </figure>
+    <a routerLink = '/component-detail '>
+    <button>Edit</button>
+    </a>
+    <button>Delete</button>
+  </div>
+</div>

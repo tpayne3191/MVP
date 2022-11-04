@@ -11,16 +11,24 @@ import { WeaponTableRowComponent } from './weapon/weapon-table-row/weapon-table-
 import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.component';
 import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
 import { FormsModule } from '@angular/forms';
+import { ComponentDetailsComponent } from './component-details/component-details.component';
+import { ComponentFormComponent } from './component-form/component-form.component';
+import { ComponentTableComponent } from './component-table/component-table.component';
+import { ComponentCardComponent } from './component-card/component-card.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     WeaponComponent,
     WeaponTableComponent,
     WeaponTableRowComponent,
     WeaponDetailsComponent,
-    WeaponFormComponent
-  ],
+    WeaponFormComponent,
+    ComponentDetailsComponent,
+    ComponentFormComponent,
+    ComponentTableComponent,
+      ComponentCardComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,

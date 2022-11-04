@@ -1,0 +1,46 @@
+<form (ngSubmit)="handleSubmit()" *ngIf="campaigns$ | async as campaigns">
+  <div>
+    <label for="startDate">
+      <strong>
+        Start Date
+      </strong>
+    </label>
+    <input
+      [(ngModel)]="campaignModel.dateStarted"
+      type="text"
+      id="campaignStartDate"
+      name="campaignStartDate"
+      class="form-control mb-3"
+    />
+  </div>
+  <div>
+    <label for="endDate">
+      <strong>
+        End Date
+      </strong>
+    </label>
+    <input
+      [(ngModel)]="campaignModel.dateEnded"
+      type="text"
+      id="campaignStartDate"
+      name="campaignStartDate"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label for="price"><strong>
+      Campaign Name
+    </strong></label>
+    <input
+      type="text"
+      id="Name"
+      name="Name"
+      [(ngModel)]="campaignModel.name"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
