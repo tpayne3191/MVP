@@ -20,46 +20,54 @@
 </head>
 <body style="background-color: #0e2431;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: #bc2525; ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: #bc2525;">
             <div class="container">
-                <a class="navbar-brand text-white" href="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a
-                              class="nav-link text-white active"
-                              aria-current="page"
-                              href="/"
-                              routerLinkActive="active"
-                              ariaCurrentWhenActive="page"
-                              >Home</a
-                            >
-                        </li>
-                        <li class="dropdown">
-                            <a class="nav-link active dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Manage
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <a 
-                                        class="dropdown-item" 
-                                        href="/weapon"
-                                        routerLinkActive="active"
-                                        ariaCurrentWhenActive="page"
-                                    >Weapons</a>
-                                </li>
-                            </ul>
-                        </li>
+              <a class="navbar-brand text-white" href="#">
+                <i class="fa-solid fa-house"></i>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a
+                        class="nav-link text-white active"
+                        aria-current="page"
+                        href="/"
+                        routerLinkActive="active"
+                        ariaCurrentWhenActive="page"
+                    >Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Manage
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li>
+                        <a 
+                            class="dropdown-item" 
+                            href="/weapon" 
+                            routerLinkActive="active" 
+                            ariaCurrentWhenActive="page">
+                            Weapons
+                        </a>
+                      </li>
+                      <li>
+                        <a 
+                            class="dropdown-item" 
+                            href="/character" 
+                            routerLinkActive="active" 
+                            ariaCurrentWhenActive="page">
+                            Characters
+                        </a>
+                      </li>
                     </ul>
-                </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </nav>
+          </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -72,5 +80,6 @@
             &copy; 2022 - Campaign Manager <i class="fa-brands fa-d-and-d"></i>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
