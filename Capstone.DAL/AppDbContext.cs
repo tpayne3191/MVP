@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Capstone.Core.DTOs;
 using Capstone.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace Capstone.DAL
         public DbSet<Character> Character { get; set; }
         public DbSet<Weapon> Weapon { get; set; }
         public DbSet<LoginItem> LoginItem { get; set; }
-
+       
         public AppDbContext()
         {
         }

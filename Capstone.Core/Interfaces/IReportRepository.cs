@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Capstone.Core.DTOs;
 using Capstone.Core.Entities;
 
 namespace Capstone.Core.Interfaces
 {
-    // todo: Replace properties with actual classes once created
+    
     public interface IReportRepository
     {
-        //Result<List<InsertClassName>> GetTopCampaigns();
-        //Result<List<InsertClassName>> GetTopHitPointCharacters();
+        Result<List<LongestCampaigns>> GetLongestCampaigns();
+        Result<List<LargestHealthPools>> GetCharactersByHealthPool();
     }
 }

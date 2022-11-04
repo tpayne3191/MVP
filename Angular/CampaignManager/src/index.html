@@ -1,13 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Campaign Manager</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Capstone</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/f4a2bb9c08.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  <app-root></app-root>
+<body style="background-color: #0e2431;">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: #bc2525; ">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a
+                              class="nav-link text-white active"
+                              aria-current="page"
+                              href="/"
+                              routerLinkActive="active"
+                              ariaCurrentWhenActive="page"
+                              >Home</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                          <a
+                            class="nav-link text-white"
+                            href="/weapon"
+                            routerLinkActive="active"
+                            ariaCurrentWhenActive="page"
+                            >Weapon</a
+                          >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/reports" routerLinkActive="active" ariaCurrentWhenActive="page">Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+          <app-root></app-root>
+        </main>
+    </div>
+
+    <footer class="footer text-white" style="background-color: #bc2525; ">
+        <div class="container">
+            &copy; 2022 - Campaign Manager <i class="fa-brands fa-d-and-d"></i>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
