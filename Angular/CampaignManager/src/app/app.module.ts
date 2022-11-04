@@ -25,9 +25,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //   dataEncapsulation: false,
+    // }),
     AppRoutingModule,
   ],
   providers: [],
