@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import Player from '../types/player.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
