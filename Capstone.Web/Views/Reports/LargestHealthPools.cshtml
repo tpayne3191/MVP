@@ -1,0 +1,40 @@
+﻿@using Capstone.Core.DTOs
+
+@model List<Capstone.Core.DTOs.LargestHealthPools>
+
+@{
+    ViewBag.Title = "Largest Health Pools";
+}
+<div class="mb-3">
+    <h1 class="text-white">Largest Health Pools</h1>
+</div>
+<div>
+    <table class="table text-white">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Hit Points</th>
+                <th>Armor Class</th>
+                <th>Class</th>
+                <th>Alignment</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var character in Model)
+        {
+            <tr>
+                <td>@character.Id</td>
+                <td>@character.Name</td>
+                <td>@character.HitPoints</td>
+                <td>@character.ArmorClass</td>
+                <td>@character.Class</td>
+                <td>@character.Alignment</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Index" asp-controller="Reports">Return</a>
+</div>

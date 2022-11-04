@@ -22,5 +22,27 @@ namespace Capstone.Web.Controllers
         {
             return View();
         }
+
+        [Route("reports/largesthealthpools")]
+        [HttpGet]
+        public IActionResult LargestHealthPools()
+        {
+            var result = _reportRepository.GetCharactersByHealthPool();
+
+            if (result.Success) return View(result.Data);
+
+            throw new Exception(result.Message);
+        }
+
+        [Route("reports/longestcampaigns")]
+        [HttpGet]
+        public IActionResult LongestCampaigns()
+        {
+            var result = _reportRepository.GetLongestCampaigns();
+
+            if (result.Success) return View(result.Data);
+
+            throw new Exception(result.Message);
+        }
     }
 }
