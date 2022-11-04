@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'weapon', component: WeaponComponent },
   { path: 'character', component: CharacterComponent },
+  // { path: 'campaign', component: CampaignComponent },
+  // { path: 'player', component: PlayerComponent },
 ];
 
 @NgModule({
