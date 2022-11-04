@@ -14,10 +14,10 @@ namespace Capstone.DAL
 
         public Result<List<LongestCampaigns>> GetLongestCampaigns()
         {
-            List<LongestCampaigns> longestCampaigns = new List<LongestCampaigns>();
+            var longestCampaigns = new List<LongestCampaigns>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
-                var cmd = new SqlCommand("MostCampaignsCompleted", cn);
+                var cmd = new SqlCommand("LongestCampaigns", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cn.Open();
@@ -28,7 +28,6 @@ namespace Capstone.DAL
                     {
                         LongestCampaigns model = new LongestCampaigns
                         {
-                            Id = (int)reader["Id"],
                             DateDiff = (int)reader["DateDiff"],
                             Name = reader["Name"].ToString(),
                             DateStarted = (DateTime)reader["DateStarted"],
@@ -48,10 +47,10 @@ namespace Capstone.DAL
 
         public Result<List<LargestHealthPools>> GetCharactersByHealthPool()
         {
-            List<LargestHealthPools> characters = new List<LargestHealthPools>();
+            var characters = new List<LargestHealthPools>();
             using (var cn = new SqlConnection(ConfigurationManager.GetConnectionString()))
             {
-                var cmd = new SqlCommand("MostHitPoints", cn);
+                var cmd = new SqlCommand("LargestHealthPools", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cn.Open();
