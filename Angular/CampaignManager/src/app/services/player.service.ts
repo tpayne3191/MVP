@@ -12,17 +12,17 @@ export class PlayerService {
   private url = 'https://localhost:5001/api/players';
 
   // Load the initial data as an Observable
-  players$: Observable<Player[]> = this.http.get<Player[]>(this.url);
+  player$: Observable<Player[]> = this.http.get<Player[]>(this.url);
 
-  delete(players: Player): Observable<null> {
-    return this.http.delete<null>(this.url + '/' + players.id);
+  delete(player: Player): Observable<null> {
+    return this.http.delete<null>(this.url + '/' + player.id);
   }
 
-  update(players: Player): Observable<Player> {
-    return this.http.put<Player>(this.url + '/' + players.id, players);
+  update(player: Player): Observable<Player> {
+    return this.http.put<Player>(this.url + '/' + player.id, player);
   }
 
-  create(players: Player): Observable<Player> {
-    return this.http.post<Player>(this.url, players);
+  create(player: Player): Observable<Player> {
+    return this.http.post<Player>(this.url, player);
   }
 }

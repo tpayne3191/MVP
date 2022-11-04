@@ -1,0 +1,59 @@
+<p>player-form works!</p>
+<form (ngSubmit)="handleSubmit()" *ngIf="players$ | async as players">
+  <div>
+    <label for="name">
+      <strong>
+        Player Name
+      </strong>
+    </label>
+    <input
+      [(ngModel)]="playerModel.name"
+      type="text"
+      id="playerName"
+      name="playerName"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label for="phone"><strong>
+      Phone
+    </strong></label>
+    <input
+      type="text"
+      id="playerPhone"
+      name="playerPhone"
+      [(ngModel)]="playerModel.phone"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label for="email"><strong>
+      Email
+    </strong></label>
+    <input
+      type="text"
+      id="playerEmail"
+      name="playerEmail"
+      [(ngModel)]="playerModel.email"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label for="city"><strong>
+      City
+    </strong></label>
+    <input
+      type="text"
+      id="playerCity"
+      name="playerCity"
+      [(ngModel)]="playerModel.city"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+<div>Players Characters link needed</div>

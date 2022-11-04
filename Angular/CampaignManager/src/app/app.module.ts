@@ -16,6 +16,12 @@ import { ComponentTableComponent } from './campaigns/component-table/component-t
 import { ComponentCardComponent } from './campaigns/component-card/component-card.component';
 import { HomeComponent } from './home/home.component';
 import { ComponentDetailsComponent } from './campaigns/component-details/component-details.component';
+import { PlayerComponent } from './player/player.component';
+import { PlayerDetailsComponent } from './player/player-details/player-details.component';
+import { PlayerFormComponent } from './player/player-form/player-form.component';
+import { PlayerTableComponent } from './player/player-table/player-table.component';
+import { PlayerTableRowComponent } from './player/player-table-row/player-table-row.component';
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,13 @@ import { ComponentDetailsComponent } from './campaigns/component-details/compone
     ComponentFormComponent,
     ComponentTableComponent,
     ComponentCardComponent,
-    HomeComponent
+    HomeComponent,
+    PlayerComponent,
+    PlayerDetailsComponent,
+    PlayerFormComponent,
+    PlayerTableComponent,
+    PlayerTableRowComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
