@@ -12,6 +12,7 @@ import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.c
 import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     WeaponTableRowComponent,
     WeaponDetailsComponent,
     WeaponFormComponent,
-    HomeComponent
+    HomeComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
