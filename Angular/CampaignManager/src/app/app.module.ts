@@ -11,6 +11,11 @@ import { WeaponTableRowComponent } from './weapon/weapon-table-row/weapon-table-
 import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.component';
 import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
 import { FormsModule } from '@angular/forms';
+import { PlayerComponent } from './player/player.component';
+import { PlayerDetailsComponent } from './player/player-details/player-details.component';
+import { PlayerFormComponent } from './player/player-form/player-form.component';
+import { PlayerTableComponent } from './player/player-table/player-table.component';
+import { PlayerTableRowComponent } from './player/player-table-row/player-table-row.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +24,20 @@ import { FormsModule } from '@angular/forms';
     WeaponTableComponent,
     WeaponTableRowComponent,
     WeaponDetailsComponent,
-    WeaponFormComponent
+    WeaponFormComponent,
+    PlayerComponent,
+    PlayerDetailsComponent,
+    PlayerFormComponent,
+    PlayerTableComponent,
+    PlayerTableRowComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    //   dataEncapsulation: false,
+    // }),
     AppRoutingModule,
   ],
   providers: [],
