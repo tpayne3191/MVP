@@ -6,5 +6,5 @@ export default interface Weapon {
   damage: string;
   range: number;
   description: string;
-  characterWeapons: CharacterWeapon [];
+  characterWeapons?: CharacterWeapon[];
 }
