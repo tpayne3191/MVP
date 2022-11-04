@@ -1,0 +1,59 @@
+<form *ngIf="players$ | async as players">
+  <div>
+    <label for="name">
+      <strong>
+        Player Name
+      </strong>
+    </label>
+    <input
+      type="text"
+      id="playerName"
+      name="playerName"
+      class="form-control-plaintext"
+      value = "player.name"
+    />
+  </div>
+
+  <div>
+    <label for="phone"><strong>
+      Phone
+    </strong></label>
+    <input
+      type="text"
+      id="playerPhone"
+      name="playerPhone"
+      class="form-control-plaintext"
+      value = "player.phone"
+    />
+  </div>
+
+  <div>
+    <label for="email"><strong>
+      Email
+    </strong></label>
+    <input
+      type="text"
+      id="playerEmail"
+      name="playerEmail"
+      class="form-control-plaintext"
+      value = "player.email"
+    />
+  </div>
+
+  <div>
+    <label for="city"><strong>
+      City
+    </strong></label>
+    <input
+      type="text"
+      id="playerCity"
+      name="playerCity"
+      class="form-control-plaintext"
+      value="player.city"
+    />
+  </div>
+</form>
+
+<div>Players Characters link needed</div>
+
+<button (click)="goBack()" class="btn btn-primary">Back</button>
