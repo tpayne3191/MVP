@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using Capstone.Core;
 using Capstone.Core.Entities;
 using Capstone.Core.Interfaces;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Capstone.DAL
 {
@@ -59,18 +61,23 @@ namespace Capstone.DAL
             }
         }
 
-        public Result Update(Weapon Weapon)
+        public Result Update(Weapon weapon)
         {
+            var weaponResult = ReadById(weapon.Id);
+            
             try
             {
-                _context.Weapon.Update(Weapon);
-                _context.SaveChanges();
-                return new Result<Weapon>() { Success = true };
+                Result<Weapon> createResult = new Result<Weapon>();
+                if (weaponResult.Success)
+                {
+                    var deleteResult = Delete(weapon.Id);
+                    createResult = Create(weapon);
+                }
+                return new Result<Weapon>() { Success = true, Data = createResult.Data };
             }
             catch (Exception e)
             {
                 return new Result<Weapon>() { Success = false, Message = e.Message };
-
             }
         }
 
