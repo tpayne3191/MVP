@@ -6,13 +6,16 @@ import { PlayerComponent } from './player/player.component';
 import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.component';
 import { HomeComponent } from './home/home.component';
 import { CharacterComponent } from './character/character.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'weapon', component: WeaponComponent },
+  { path: 'weapon', component: WeaponComponent, canActivate: [AuthGuard]  },
   { path: 'player', component: PlayerComponent },
   { path: 'character', component: CharacterComponent },
   { path: 'weapon-detail/:id', component: WeaponDetailsComponent },
+  { path: 'login', component: LoginFormComponent },
   // { path: 'campaign', component: CampaignComponent },
   // { path: 'player', component: PlayerComponent },
 ];

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './core/in-memory-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { WeaponComponent } from './weapon/weapon.component';
 import { WeaponTableComponent } from './weapon/weapon-table/weapon-table.component';
@@ -18,6 +18,9 @@ import { PlayerTableComponent } from './player/player-table/player-table.compone
 import { PlayerTableRowComponent } from './player/player-table-row/player-table-row.component';
 import { HomeComponent } from './home/home.component';
 import { CharacterComponent } from './character/character.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { AuthGuard } from './guards/auth.guard';
+import { JwtInterceptor } from './jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { CharacterComponent } from './character/character.component';
     PlayerTableComponent,
     PlayerTableRowComponent,
     HomeComponent,
-    CharacterComponent
+    CharacterComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { CharacterComponent } from './character/character.component';
     // }),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
