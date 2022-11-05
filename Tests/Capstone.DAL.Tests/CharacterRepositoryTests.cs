@@ -167,8 +167,20 @@ namespace Capstone.DAL.Tests
                Intelligence = 12,
                Wisdom = 11,
                Charisma = 10,
-               CharacterWeapons = new List<CharacterWeapon>()
-
+               CharacterWeapons = new List<CharacterWeapon>(),
+               Player = new Player()
+               {
+                   Name = "John Smith",
+                   City = "SLC",
+                   Email = "None@None.com",
+                   Phone = "123-456-7890"
+               },
+               Campaign = new Campaign()
+               {
+                   Name = "Test Name",
+                   DateStarted = DateTime.MinValue,
+                   DateEnded = DateTime.MaxValue,
+               }
             };
             Result<Character> expectedResult = new Result<Character>()
             {
@@ -186,8 +198,6 @@ namespace Capstone.DAL.Tests
             // Assert
             Assert.AreEqual(expectedResult.Success, actualResult.Success);
             Assert.AreEqual(expectedResult.Message, actualResult.Message);
-
-
         }
     }
 }
