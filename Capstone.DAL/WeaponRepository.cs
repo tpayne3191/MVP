@@ -73,7 +73,7 @@ namespace Capstone.DAL
                     var deleteResult = Delete(weapon.Id);
                     createResult = Create(weapon);
                 }
-                return new Result<Weapon>() { Success = true, Data = createResult.Data };
+                return new Result<Weapon>() { Success = createResult.Success, Data = createResult.Data };
             }
             catch (Exception e)
             {
