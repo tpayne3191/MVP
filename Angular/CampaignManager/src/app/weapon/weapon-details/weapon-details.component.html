@@ -1,8 +1,7 @@
 <h1 class="d-flex justify-content-center mt-3">Weapons</h1>
-<table class="table table-striped">
+<table class="table table-striped text-white">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Weapon Name</th>
       <th>Damage</th>
       <th>Range</th>
@@ -10,7 +9,11 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let weapon of weapon.characterWeapons">
+    <td>{{weapon.name}}</td>
+    <td>{{weapon.damage}}</td>
+    <td>{{weapon.range}}</td>
+    <td>{{weapon.description}}</td>
+    <tr *ngFor="let weapon of weapon.characterWeapons">
         <td>{{ weapon.characterId }}</td>
         <td>{{ weapon.weaponId }}</td>
         <td>{{ weapon.quantity }}</td>

@@ -36,6 +36,7 @@
     <h1 class="d-flex justify-content-center mt-3 mb-5">Modify / Create New</h1>
     <br>
     <app-weapon-form
+    *ngIf="isLoggedIn()"
     [weaponModel]="editedWeapon"
     (weaponSubmitted)="handleWeaponSubmit($event)"
   ></app-weapon-form>
