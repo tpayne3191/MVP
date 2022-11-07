@@ -25,7 +25,6 @@ export class WeaponTableComponent implements OnInit {
     this.weapons$ = this.weapons$.pipe(map((weapons) => weapons));
   }
 
-
   handleClicked([weapon, operation]: [Weapon, Operation]) {
     console.log(weapon);
     if (operation === 'edit') {
@@ -48,6 +47,8 @@ export class WeaponTableComponent implements OnInit {
         this.mutateWeapons();
       });
     }
+    let emptyWeapon: Weapon = {} as Weapon;
+    this.editedWeapon = {...emptyWeapon }
   }
 
   isLoggedIn() {
