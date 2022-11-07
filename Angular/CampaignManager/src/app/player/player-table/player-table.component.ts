@@ -22,7 +22,7 @@ export class PlayerTableComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.players$ = this.playerService.player$;
+    this.players$ = this.playerService.players$;
   }
 
   private mutatePlayers = () => {
@@ -50,6 +50,8 @@ export class PlayerTableComponent implements OnInit {
         this.mutatePlayers();
       });
     }
+    let emptyPlayer: Player = {} as Player;
+    this.editedPlayer = {...emptyPlayer }
   }
 
   goBack(): void {
