@@ -12,7 +12,7 @@ import { PlayerDetailsComponent } from './player/player-details/player-details.c
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'weapon', component: WeaponComponent, canActivate: [AuthGuard]  },
+  { path: 'weapon', component: WeaponComponent },
   { path: 'player', component: PlayerComponent },
   { path: 'player-detail/:id', component: PlayerDetailsComponent },
   { path: 'character', component: CharacterComponent },
