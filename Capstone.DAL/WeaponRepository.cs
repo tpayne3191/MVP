@@ -68,13 +68,12 @@ namespace Capstone.DAL
             
             try
             {
-                Result<Weapon> createResult = new Result<Weapon>();
                 if (weaponResult.Success)
                 {
-                    var deleteResult = Delete(weapon.Id);
-                    createResult = Create(weapon);
+                    _context.Entry(weaponResult.Data).CurrentValues.SetValues(weapon);
+                    _context.SaveChanges();
                 }
-                return new Result<Weapon>() { Success = createResult.Success, Data = createResult.Data };
+                return new Result<Weapon>() { Success = true, Data = weapon };
             }
             catch (Exception e)
             {

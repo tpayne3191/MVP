@@ -25,6 +25,7 @@
 
   <div class="col-4">
     <app-player-form
+    *ngIf="isLoggedIn()"
     [playerModel]="editedPlayer"
     (playerSubmitted)="handlePlayerSubmit($event)"
   ></app-player-form>
