@@ -19,7 +19,7 @@ export class WeaponService {
   }
 
   update(weapon: Weapon): Observable<Weapon> {
-    return this.http.put<Weapon>(this.url + '/' + weapon.id, weapon);
+    return this.http.put<Weapon>(this.url, weapon);
   }
 
   create(weapon: Weapon): Observable<Weapon> {

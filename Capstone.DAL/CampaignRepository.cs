@@ -5,6 +5,7 @@ using System.Text;
 using Capstone.Core;
 using Capstone.Core.Entities;
 using Capstone.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Capstone.DAL
 {
@@ -35,7 +36,7 @@ namespace Capstone.DAL
         {
             try
             {
-                var result = _context.Campaign.ToList();
+                var result = _context.Campaign.Include(c => c.Characters).ToList();
                 return new Result<List<Campaign>>() { Success = true, Data = result };
             }
             catch (Exception e)
@@ -48,7 +49,7 @@ namespace Capstone.DAL
         {
             try
             {
-                var result = _context.Campaign.FirstOrDefault(
+                var result = _context.Campaign.Include(c => c.Characters).FirstOrDefault(
                     i => i.Id == id);
                 return new Result<Campaign>() { Success = true, Data = result };
             }

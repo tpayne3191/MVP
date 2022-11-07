@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { WeaponService } from 'src/app/services/weapon.service';
 import { Operation } from '../../types/operation.model';
+import { AuthServiceService } from '../../services/auth-service.service';
 import Weapon from 'src/app/types/weapon.model';
 
 @Component({
@@ -14,7 +15,7 @@ export class WeaponTableComponent implements OnInit {
   editedWeapon: Weapon = {} as Weapon;
   weapons$: Observable<Weapon[]> = new Observable<Weapon[]>();
 
-  constructor(private weaponService: WeaponService) { }
+  constructor(private weaponService: WeaponService, private authServiceService: AuthServiceService) { }
 
   ngOnInit(): void {
     this.weapons$ = this.weaponService.weapon$;
@@ -23,7 +24,6 @@ export class WeaponTableComponent implements OnInit {
   private mutateWeapons = () => {
     this.weapons$ = this.weapons$.pipe(map((weapons) => weapons));
   }
-
 
   handleClicked([weapon, operation]: [Weapon, Operation]) {
     console.log(weapon);
@@ -47,5 +47,11 @@ export class WeaponTableComponent implements OnInit {
         this.mutateWeapons();
       });
     }
+    let emptyWeapon: Weapon = {} as Weapon;
+    this.editedWeapon = {...emptyWeapon }
+  }
+
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 }
