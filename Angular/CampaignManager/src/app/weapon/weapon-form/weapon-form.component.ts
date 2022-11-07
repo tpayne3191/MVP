@@ -25,5 +25,4 @@ export class WeaponFormComponent implements OnInit {
   handleSubmit() {
     this.weaponSubmitted.emit(this.weaponModel);
   }
-
 }
