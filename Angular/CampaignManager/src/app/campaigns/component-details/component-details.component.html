@@ -1,6 +1,5 @@
 <h1 class="d-flex justify-content-center mt-3 text-white">Campaigns</h1>
 <table class="table table-striped" *ngIf="campaigns$ | async as campaigns" id="campaign">
-
   <tbody class="">
     <tr
       *ngFor="let campaign of campaigns">
@@ -8,4 +7,5 @@
     </tr>
   </tbody>
 </table>
+<app-component-form></app-component-form>
 <button (click)="goBack()" class="btn btn-primary">Back</button>

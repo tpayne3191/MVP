@@ -2,15 +2,17 @@
   <div class="card-body campaignContainer" *ngIf="campaigns$ | async as campaigns" id="campaign" >
     <div *ngFor="let campaign of campaigns" class="campaignCard">
       <figure>
-        <h3 class="card-title">{{campaign.name}} </h3>
-      <h6>Characters</h6>
-        <h3>{{campaign.characters}} </h3>
+        <p class="card-title">{{campaign.name}}</p>
+        <!-- <p>{{campaign.characters.name}}</p> -->
+        <!-- <p class="card-title">{{campaign.characters.name}}</p>
+        <div *ngFor="let character of campaigns.characters">
+          <p class="card-title">{{character.name}}</p>
+        </div> -->
     </figure>
-    <a routerLink = '/component-detail '>
-    <button>Edit</button>
+    <a routerLink = '/campaign-detail/id'>
+    <button (click) = 'handleClick(Op.EDIT)'>Edit</button>
     </a>
-    <button>Delete</button>
+    <button (click) = 'handleClick(Op.DELETE)'>Delete</button>
     </div>
-
   </div>
 </div>

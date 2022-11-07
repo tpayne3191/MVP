@@ -11,9 +11,16 @@ import {Operation} from '../../types/operation.model';
   templateUrl: './component-card.component.html',
   styleUrls: ['./component-card.component.css']
 })
-export class ComponentCardComponent implements OnInit {
+export class ComponentCardComponent  {
+  @Output() clicked: EventEmitter<[Campaign, Operation]> = new EventEmitter<[Campaign,Operation]>();
   @Input() campaign: Campaign = {} as Campaign;
-  editedCampaign: Campaign = {} as Campaign;
+
+  handleClick(operation:Operation) {
+    this.clicked.emit([this.campaign, operation]);
+  }
+
+  Op = Operation;
+  // editedCampaign: Campaign = {} as Campaign;
   campaigns$: Observable<Campaign[]> = new Observable<Campaign[]>();
   constructor(private campaignService: CampaignService) { }
 
@@ -21,30 +28,30 @@ export class ComponentCardComponent implements OnInit {
     this.campaigns$ = this.campaignService.campaign$;
 
   }
-  private mutateCampaigns = () => {
-    this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
-  }
-  handleClicked([campaign, operation]: [Campaign, Operation]) {
-    console.log(campaign);
-    if (operation === 'edit') {
-      this.editedCampaign = { ...campaign };
-    } else if (operation === 'delete') {
-      this.campaignService.delete(campaign).subscribe(() => {
-        this.mutateCampaigns();
-      });
-    }
-  }
+  // private mutateCampaigns = () => {
+  //   this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
+  // }
+  // handleClicked([campaign, operation]: [Campaign, Operation]) {
+  //   console.log(campaign);
+  //   if (operation === 'edit') {
+  //     this.editedCampaign = { ...campaign };
+  //   } else if (operation === 'delete') {
+  //     this.campaignService.delete(campaign).subscribe(() => {
+  //       this.mutateCampaigns();
+  //     });
+  //   }
+  // }
 
-  handleWeaponSubmit(campaign: Campaign) {
-    if (campaign.id) {
-      this.campaignService.update(campaign).subscribe(() => {
-        this.mutateCampaigns();
-      });
-    } else {
-      this.campaignService.create(campaign).subscribe(() => {
-        this.mutateCampaigns();
-      });
-    }
-  }
+  // handleCampaignSubmit(campaign: Campaign) {
+  //   if (campaign.id) {
+  //     this.campaignService.update(campaign).subscribe(() => {
+  //       this.mutateCampaigns();
+  //     });
+  //   } else {
+  //     this.campaignService.create(campaign).subscribe(() => {
+  //       this.mutateCampaigns();
+  //     });
+  //   }
+  // }
 
 }

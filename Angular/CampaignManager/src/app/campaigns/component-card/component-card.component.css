@@ -1,3 +1,18 @@
 .campaignCard{
 
 }
+/*
+div {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 4px;
+} */
+
+figcaption {
+  margin: 8px 0;
+  text-align: center;
+}
