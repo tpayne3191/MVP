@@ -1,0 +1,169 @@
+<form (ngSubmit)="handleSubmit()" *ngIf="characters$ | async as characters">
+    <fieldset class="field_set">
+      <legend>Edit \ Add Character</legend>
+        <div>
+            <hr>
+            <label for="name">
+                Character Name
+            </label>
+            <input
+                [(ngModel)]="characterModel.name"
+                type="text"
+                id="characterName"
+                name="characterName"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div>
+            <label for="level">
+                Level
+            </label>
+            <input
+                [(ngModel)]="characterModel.level"
+                type="number"
+                id="characterLevel"
+                name="characterLevel"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div>
+            <label for="race">
+                Race
+            </label>
+            <input
+                [(ngModel)]="characterModel.race"
+                type="text"
+                id="characterRace"
+                name="characterRace"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div>
+            <label for="alignment">
+                Alignment
+            </label>
+            <input
+                [(ngModel)]="characterModel.alignment"
+                type="text"
+                id="characterAlignment"
+                name="characterAlignment"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div>
+            <label for="armorClass">
+                Armor Class <i class="fa-solid fa-shield" style="color: #C8C8C8"></i>
+            </label>
+            <input
+                [(ngModel)]="characterModel.armorClass"
+                type="number"
+                id="characterArmorClass"
+                name="characterArmorClass"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div>
+            <label for="hitPoints">
+                Hit Points <i class="fa-solid fa-heart" style="color: #bc2525;"></i>
+            </label>
+            <input
+                [(ngModel)]="characterModel.hitPoints"
+                type="number"
+                id="characterHitPoints"
+                name="characterHitPoints"
+                class="form-control mb-3"
+            />
+        </div>
+
+        <div class="row" style="color: #ffc107;">
+            <div class="col-4">
+                <label for="strength">
+                    Strength
+                </label>
+                <input
+                    [(ngModel)]="characterModel.strength"
+                    type="number"
+                    id="characterStrength"
+                    name="characterStrength"
+                    class="form-control mb-3"
+                />
+            </div>
+    
+            <div class="col-4">
+                <label for="dexterity">
+                    Dexterity
+                </label>
+                <input
+                    [(ngModel)]="characterModel.strength"
+                    type="number"
+                    id="characterStrength"
+                    name="characterStrength"
+                    class="form-control mb-3"
+                />
+            </div>
+
+            <div class="col-4">
+                <label for="constitution">
+                    Constitution
+                </label>
+                <input
+                    [(ngModel)]="characterModel.constitution"
+                    type="number"
+                    id="characterConstitution"
+                    name="characterConstitution"
+                    class="form-control mb-3"
+                />
+            </div>
+        </div>
+
+        <div class="row" style="color: #ffc107;">
+            <div class="col-4">
+                <label for="intelligence">
+                    Intelligence
+                </label>
+                <input
+                    [(ngModel)]="characterModel.intelligence"
+                    type="number"
+                    id="characterIntelligence"
+                    name="characterIntelligence"
+                    class="form-control mb-3"
+                />
+            </div>
+    
+            <div class="col-4">
+                <label for="wisdom">
+                    Wisdom
+                </label>
+                <input
+                    [(ngModel)]="characterModel.wisdom"
+                    type="number"
+                    id="characterWisdom"
+                    name="characterWisdom"
+                    class="form-control mb-3"
+                />
+            </div>
+
+            <div class="col-4">
+                <label for="charisma">
+                    Charisma
+                </label>
+                <input
+                    [(ngModel)]="characterModel.charisma"
+                    type="number"
+                    id="characterCharisma"
+                    name="characterCharisma"
+                    class="form-control mb-3"
+                />
+            </div>
+        </div>
+        
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </fieldset>
+  </form>
+  
+  

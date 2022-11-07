@@ -4,6 +4,7 @@ export default interface Character {
   id: number;
   playerId: number
   campaignId: number;
+  name: string;
   characterWeapons: CharacterWeapon [];
   level: number;
   armorClass:number;
