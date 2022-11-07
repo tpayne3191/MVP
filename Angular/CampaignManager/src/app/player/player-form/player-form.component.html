@@ -1,10 +1,9 @@
-<p>player-form works!</p>
 <form (ngSubmit)="handleSubmit()" *ngIf="players$ | async as players">
+  <fieldset class="field_set">
+    <legend>Edit\Add Player</legend>
   <div>
     <label for="name">
-      <strong>
         Player Name
-      </strong>
     </label>
     <input
       [(ngModel)]="playerModel.name"
@@ -16,9 +15,9 @@
   </div>
 
   <div>
-    <label for="phone"><strong>
+    <label for="phone">
       Phone
-    </strong></label>
+    </label>
     <input
       type="text"
       id="playerPhone"
@@ -29,9 +28,9 @@
   </div>
 
   <div>
-    <label for="email"><strong>
+    <label for="email">
       Email
-    </strong></label>
+   </label>
     <input
       type="text"
       id="playerEmail"
@@ -42,9 +41,9 @@
   </div>
 
   <div>
-    <label for="city"><strong>
+    <label for="city">
       City
-    </strong></label>
+    </label>
     <input
       type="text"
       id="playerCity"
@@ -53,7 +52,7 @@
       class="form-control mb-3"
     />
   </div>
-
   <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </fieldset>
 </form>
-<div>Players Characters link needed</div>
+

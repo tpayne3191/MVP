@@ -31,7 +31,7 @@ import { CharacterComponent } from './character/character.component';
     PlayerDetailsComponent,
     PlayerFormComponent,
     PlayerTableComponent,
-    PlayerTableRowComponent
+    PlayerTableRowComponent,
     HomeComponent,
     CharacterComponent
   ],
