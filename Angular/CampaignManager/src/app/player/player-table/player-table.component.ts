@@ -5,6 +5,7 @@ import { Operation } from '../../types/operation.model';
 import { Location } from '@angular/common';
 import Player from 'src/app/types/player.model';
 import { map } from 'rxjs/operators';
+import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-player-table',
@@ -18,8 +19,10 @@ export class PlayerTableComponent implements OnInit {
 
   constructor(
     private playerService: PlayerService,
-    private location: Location
+    private location: Location,
+    private authServiceService: AuthServiceService
     ) { }
+
 
   ngOnInit(): void {
     this.players$ = this.playerService.players$;
@@ -41,7 +44,8 @@ export class PlayerTableComponent implements OnInit {
   }
 
   handlePlayerSubmit(player: Player) {
-      if (player.id) {
+    console.log ('onSubmit in player table', player)
+    if (player.id) {
       this.playerService.update(player).subscribe(() => {
         this.mutatePlayers();
       });
@@ -56,6 +60,10 @@ export class PlayerTableComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 }
 
