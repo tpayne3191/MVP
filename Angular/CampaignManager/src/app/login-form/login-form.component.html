@@ -2,9 +2,6 @@
   <input type="text" name="email" [(ngModel)]="user.userName" />
   <input type="password" name="password" [(ngModel)]="user.password" />
   <button type="submit">Login</button>
-
-  <h2 *ngIf="isLoggedIn()">Welcome {{ getUsername() }}</h2>
-  <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
 </form>
 
 
