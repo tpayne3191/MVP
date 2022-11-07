@@ -21,6 +21,7 @@ import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './jwt-interceptor.service';
+import { CharacterTableComponent } from './character/character-table/character-table.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { JwtInterceptor } from './jwt-interceptor.service';
     PlayerTableRowComponent,
     HomeComponent,
     CharacterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CharacterTableComponent
   ],
   imports: [
     BrowserModule,
