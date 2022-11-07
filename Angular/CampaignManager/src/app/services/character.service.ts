@@ -12,7 +12,7 @@ export class CharacterService {
   private url = 'https://localhost:5001/api/characters';
 
   // Load the initial data as an Observable
-  character$: Observable<Character[]> = this.http.get<Character[]>(this.url);
+  characters$: Observable<Character[]> = this.http.get<Character[]>(this.url);
 
   delete(character: Character): Observable<null> {
     return this.http.delete<null>(this.url + '/' + character.id);
