@@ -2,8 +2,6 @@
 <h1 class="text-white">
     <i class="fa-brands fa-d-and-d"></i> Campaign Manager <i class="fa-brands fa-d-and-d"></i>
 </h1>
-<h2 *ngIf="isLoggedIn()">Welcome {{ getUsername() }}</h2>
 <button *ngIf="isLoggedIn()" (click)="logout()">Log out</button>
-
 <router-outlet></router-outlet>
 
