@@ -19,7 +19,7 @@ export class ComponentFormComponent implements OnInit {
   constructor(private campaignService: CampaignService) { }
 
   ngOnInit() {
-    this.campaigns$ = this.campaignService.campaign$;
+    this.campaigns$ = this.campaignService.campaigns$;
   }
 
   handleSubmit() {
