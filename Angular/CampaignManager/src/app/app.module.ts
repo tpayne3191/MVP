@@ -11,12 +11,16 @@ import { WeaponTableRowComponent } from './weapon/weapon-table-row/weapon-table-
 import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.component';
 import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
 import { FormsModule } from '@angular/forms';
+import { ComponentFormComponent } from './campaigns/component-form/component-form.component';
+import { ComponentTableComponent } from './campaigns/component-table/component-table.component';
+import { ComponentCardComponent } from './campaigns/component-card/component-card.component';
+import { HomeComponent } from './home/home.component';
+import { ComponentDetailsComponent } from './campaigns/component-details/component-details.component';
 import { PlayerComponent } from './player/player.component';
 import { PlayerDetailsComponent } from './player/player-details/player-details.component';
 import { PlayerFormComponent } from './player/player-form/player-form.component';
 import { PlayerTableComponent } from './player/player-table/player-table.component';
 import { PlayerTableRowComponent } from './player/player-table-row/player-table-row.component';
-import { HomeComponent } from './home/home.component';
 import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -30,6 +34,11 @@ import { JwtInterceptor } from './jwt-interceptor.service';
     WeaponTableRowComponent,
     WeaponDetailsComponent,
     WeaponFormComponent,
+    ComponentDetailsComponent,
+    ComponentFormComponent,
+    ComponentTableComponent,
+    ComponentCardComponent,
+    HomeComponent,
     PlayerComponent,
     PlayerDetailsComponent,
     PlayerFormComponent,

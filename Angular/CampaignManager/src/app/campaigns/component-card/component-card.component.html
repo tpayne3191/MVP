@@ -1,0 +1,18 @@
+<ng-container *ngIf="campaigns$ | async as campaigns" >
+  <div *ngFor="let campaign of campaigns" class="card" style="width: 18rem;" >
+    <div class="card-body campaignContainer"  id="campaign" >
+      <div class="campaignCard">
+        <figure>
+          <h5 style="text-align:center" class="card-title">{{campaign.name}}</h5>
+          <div *ngFor="let character of campaign.characters">
+            <p class="card-title">{{character.name}}</p>
+          </div>
+        </figure>
+        <a routerLink = '/campaign-detail/id'>
+          <button (click) = 'handleClick(Op.EDIT)'>Edit</button>
+        </a>
+        <button (click) = 'handleClick(Op.DELETE)'>Delete</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

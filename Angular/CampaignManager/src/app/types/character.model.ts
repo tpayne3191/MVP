@@ -2,7 +2,8 @@ import CharacterWeapon from "./characterWeapon.model";
 
 export default interface Character {
   id: number;
-  playerId: number
+  playerId: number;
+  name: string;
   campaignId: number;
   characterWeapons: CharacterWeapon [];
   level: number;
