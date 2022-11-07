@@ -82,7 +82,9 @@ namespace Capstone.DAL
                 Result<Character> character = ReadById(id);
                 if (character != null)
                 {
-                    _context.Character.Remove(character.Data);
+                    var characterWithChildren = _context.Character
+                        .Include(c => c.CharacterWeapons).Where(c => c.Id == id).First();
+                    _context.Character.Remove(characterWithChildren);
                     _context.SaveChanges();
                 }
 
