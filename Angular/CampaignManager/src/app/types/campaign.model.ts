@@ -4,5 +4,5 @@ export default interface Campaign {
   name: string;
   dateStarted: Date;
   dateEnded: Date;
-  characters: Character;
+  characters: Character[];
 }

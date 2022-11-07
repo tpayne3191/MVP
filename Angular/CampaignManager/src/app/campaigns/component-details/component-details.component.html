@@ -2,7 +2,7 @@
 <table class="table table-striped" *ngIf="campaigns$ | async as campaigns" id="campaign">
   <tbody class="">
     <tr
-      *ngFor="let campaign of campaigns">
+      *ngFor="let character of campaign.characters">
       <td>{{campaign.characters}}</td>
     </tr>
   </tbody>
