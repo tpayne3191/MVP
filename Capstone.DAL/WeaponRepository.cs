@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Capstone.Core;
 using Capstone.Core.Entities;
 using Capstone.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Capstone.DAL
@@ -88,7 +89,9 @@ namespace Capstone.DAL
                 Result<Weapon> Weapon = ReadById(id);
                 if (Weapon != null)
                 {
-                    _context.Weapon.Remove(Weapon.Data);
+                    var weaponWithChildren = _context.Weapon
+                        .Include(w => w.CharacterWeapons).Where(w => w.Id == id).FirstOrDefault();
+                    _context.Weapon.Remove(weaponWithChildren);
                     _context.SaveChanges();
                 }
 
