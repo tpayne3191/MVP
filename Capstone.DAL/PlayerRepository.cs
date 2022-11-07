@@ -59,13 +59,19 @@ namespace Capstone.DAL
             }
         }
 
-        public Result Update(Player Player)
+        public Result Update(Player player)
         {
+            var playerResult = ReadById(player.Id);
+
             try
             {
-                _context.Player.Update(Player);
-                _context.SaveChanges();
-                return new Result<Player>() { Success = true };
+                Result<Player> createResult = new Result<Player>();
+                if (playerResult.Success)
+                {
+                    var deleteResult = Delete(player.Id);
+                    createResult = Create(player);
+                }
+                return new Result<Player>() { Success = createResult.Success, Data = createResult.Data };
             }
             catch (Exception e)
             {
