@@ -4,6 +4,8 @@ import { CampaignService } from 'src/app/services/campaign.service';
 import { Router } from '@angular/router';
 import Campaign from '../../types/campaign.model';
 import {Operation} from '../../types/operation.model';
+import { AuthServiceService } from '../../services/auth-service.service';
+
 
 
 
@@ -19,7 +21,9 @@ export class ComponentCardComponent  {
   editedCampaign: Campaign = {} as Campaign;
   Op = Operation;
 
-  constructor(private campaignService: CampaignService) { }
+  constructor(private campaignService: CampaignService,
+    private authServiceService: AuthServiceService
+    ) { }
 
   handleClick(campaign: Campaign, operation: Operation): void {
     this.clicked.emit([campaign, operation]);
@@ -47,6 +51,9 @@ export class ComponentCardComponent  {
     }
     let emptyCampaign: Campaign = {} as Campaign;
     this.editedCampaign = {...emptyCampaign }
+  }
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 
 }

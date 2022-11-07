@@ -11,13 +11,15 @@
             <p class="card-title">{{character.name}}</p>
           </div>
         </figure>
-        <button (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
-        <button (click)="handleClick(campaign, Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>Delete</button>
+        <button *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+        <button *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>Delete</button>
       </div>
     </div>
   </div>
   <div class="col-4">
+    <h3>Edit/Add Campaign</h3>
     <app-component-form
+    *ngIf="isLoggedIn()"
     [campaignModel]="editedCampaign"
     (campaignSubmitted)="handleCampaignSubmit($event)"
   ></app-component-form>
