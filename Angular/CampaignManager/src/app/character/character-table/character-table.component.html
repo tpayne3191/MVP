@@ -1,0 +1,34 @@
+<div class="row text-white">
+    <div class="col-8">
+      <legend>Characters</legend>
+      <table class="table table-hover" *ngIf="characters$ | async as characters" id="characterTable">
+        <thead class="table-borderless">
+          <tr class="text-white">
+            <th>Name</th>
+            <th>Level</th>
+            <th>Armor Class</th>
+            <th>Hit Points</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="text-white"
+            app-character-table-row
+            *ngFor="let character of characters"
+            [character] = "character"
+            (clicked)="handleClicked($event)">
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="goBack()" class="btn btn-primary mt-3">Back</button>
+    </div>
+  
+    <div class="col-4">
+      <app-character-form
+      [characterModel]="editedCharacter"
+      (characterSubmitted)="handleCharacterSubmit($event)"
+    ></app-character-form>
+    </div>
+  </div>

@@ -25,6 +25,10 @@ import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './jwt-interceptor.service';
+import { CharacterTableComponent } from './character/character-table/character-table.component';
+import { CharacterTableRowComponent } from './character/character-table-row/character-table-row.component';
+import { CharacterDetailsComponent } from './character/character-details/character-details.component';
+import { CharacterFormComponent } from './character/character-form/character-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { JwtInterceptor } from './jwt-interceptor.service';
     PlayerTableRowComponent,
     HomeComponent,
     CharacterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    CharacterTableComponent,
+    CharacterTableRowComponent,
+    CharacterDetailsComponent,
+    CharacterFormComponent
   ],
   imports: [
     BrowserModule,
