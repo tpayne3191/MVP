@@ -26,5 +26,4 @@ export class CharacterFormComponent implements OnInit {
   handleSubmit() {
     this.characterSubmitted.emit(this.characterModel);
   }
-
 }
