@@ -37,6 +37,17 @@ export class AuthServiceService {
     }
   }
 
+  public getPlayerId(): number {
+    try {
+      let token = jwt_decode(localStorage.getItem('id_token') || '') as any;
+      console.log('token: ', token);
+      return token!.playerId;
+    }
+    catch (error) {
+      return 0;
+    }
+  }
+
   public isLoggedIn() {
     if(localStorage.getItem('id_token')) {
       return true;

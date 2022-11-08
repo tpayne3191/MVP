@@ -38,7 +38,11 @@ namespace Capstone.Web.Controllers
                 var tokeOptions = new JwtSecurityToken(
                     issuer: "http://localhost:5001",
                     audience: "http://localhost:5001",
-                    claims: new List<Claim>(),
+                    claims: new List<Claim>()
+                    {
+                        new Claim("fullName", "John Citizen"),
+                        new Claim("playerId", "1")
+                    },
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: signinCredentials
                 );
