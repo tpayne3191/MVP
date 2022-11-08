@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'player-detail/:id', component: PlayerDetailsComponent },
   { path: 'character', component: CharacterComponent },
-  { path: 'character/:id', component: CharacterDetailsComponent },
+  { path: 'character-details/:id', component: CharacterDetailsComponent },
   { path: 'weapon-detail/:id', component: WeaponDetailsComponent },
   { path: 'campaign', component: CampaignComponent },
   { path: 'campaign-detail/:id', component: ComponentDetailsComponent },
