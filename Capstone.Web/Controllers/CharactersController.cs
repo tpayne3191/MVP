@@ -50,9 +50,10 @@ namespace Capstone.Web.Controllers
         {
             Character character = new Character
             {
-                Id = model.CampaignId,
+                Id = model.Id,
                 PlayerId = model.PlayerId,
                 CampaignId = model.CampaignId,
+                Name = model.Name,
                 Level = model.Level,
                 ArmorClass = model.ArmorClass,
                 HitPoints = model.HitPoints,
@@ -84,7 +85,8 @@ namespace Capstone.Web.Controllers
         {
             Character character = new Character()
             {
-                Id = model.CampaignId,
+                Name = model.Name,
+                Id = model.Id,
                 PlayerId = model.PlayerId,
                 CampaignId = model.CampaignId,
                 Level = model.Level,

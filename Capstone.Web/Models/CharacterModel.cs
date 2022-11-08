@@ -17,6 +17,8 @@ namespace Capstone.Web.Models
         // About 
         [Required]
         public int Level { get; set; }
+        [Required] 
+        public string Name { get; set; }
         [Required]
         public int ArmorClass { get; set; }
         [Required]

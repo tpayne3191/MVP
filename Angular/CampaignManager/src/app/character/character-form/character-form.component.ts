@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { CharacterService } from 'src/app/services/character.service';
 import Character from 'src/app/types/character.model';
 
@@ -15,10 +16,11 @@ export class CharacterFormComponent implements OnInit {
 
   characters$: Observable<Character[]> = new Observable<Character[]>();
 
-  constructor(private characterService: CharacterService) { }
+  constructor(private characterService: CharacterService, private authService: AuthServiceService) { }
 
   ngOnInit(): void {
     this.characters$ = this.characterService.characters$;
+    this.characterModel.playerId = this.authService.getPlayerId();
   }
 
   handleSubmit() {

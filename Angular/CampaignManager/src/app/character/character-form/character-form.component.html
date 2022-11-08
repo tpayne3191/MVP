@@ -1,6 +1,7 @@
 <form (ngSubmit)="handleSubmit()" *ngIf="characters$ | async as characters">
     <fieldset class="field_set">
-      <legend>Edit \ Add Character</legend>
+      <legend class="d-flex justify-content-center">Edit \ Add Character</legend>
+      <!-- ---------------------------------------- About ---------------------------------------- -->
         <div>
             <hr>
             <label for="name">
@@ -11,19 +12,6 @@
                 type="text"
                 id="characterName"
                 name="characterName"
-                class="form-control mb-3"
-            />
-        </div>
-
-        <div>
-            <label for="level">
-                Level
-            </label>
-            <input
-                [(ngModel)]="characterModel.level"
-                type="number"
-                id="characterLevel"
-                name="characterLevel"
                 class="form-control mb-3"
             />
         </div>
@@ -54,31 +42,55 @@
             />
         </div>
 
-        <div>
-            <label for="armorClass">
-                Armor Class <i class="fa-solid fa-shield" style="color: #C8C8C8"></i>
-            </label>
-            <input
-                [(ngModel)]="characterModel.armorClass"
-                type="number"
-                id="characterArmorClass"
-                name="characterArmorClass"
-                class="form-control mb-3"
-            />
+        <!-- ---------------------------------------- Stats ---------------------------------------- -->
+
+        <hr>
+        <h5 class="d-flex justify-content-center">Stats</h5>
+
+        <div class="row">
+            <div class="col-4">
+                <label for="level">
+                    Level
+                </label>
+                <input
+                    [(ngModel)]="characterModel.level"
+                    type="number"
+                    id="characterLevel"
+                    name="characterLevel"
+                    class="form-control mb-3"
+                />
+            </div>
+    
+            <div class="col-4">
+                <label for="armorClass">
+                    Armor Class <i class="fa-solid fa-shield" style="color: #C8C8C8"></i>
+                </label>
+                <input
+                    [(ngModel)]="characterModel.armorClass"
+                    type="number"
+                    id="characterArmorClass"
+                    name="characterArmorClass"
+                    class="form-control mb-3"
+                />
+            </div>
+    
+            <div class="col-4">
+                <label for="hitPoints">
+                    Hit Points <i class="fa-solid fa-heart" style="color: #bc2525;"></i>
+                </label>
+                <input
+                    [(ngModel)]="characterModel.hitPoints"
+                    type="number"
+                    id="characterHitPoints"
+                    name="characterHitPoints"
+                    class="form-control mb-3"
+                />
+            </div>
         </div>
 
-        <div>
-            <label for="hitPoints">
-                Hit Points <i class="fa-solid fa-heart" style="color: #bc2525;"></i>
-            </label>
-            <input
-                [(ngModel)]="characterModel.hitPoints"
-                type="number"
-                id="characterHitPoints"
-                name="characterHitPoints"
-                class="form-control mb-3"
-            />
-        </div>
+        <!-- ---------------------------------------- Modifiers ---------------------------------------- -->
+        <hr>
+        <h5 class="d-flex justify-content-center">Modifiers</h5>
 
         <div class="row" style="color: #ffc107;">
             <div class="col-4">
@@ -99,10 +111,10 @@
                     Dexterity
                 </label>
                 <input
-                    [(ngModel)]="characterModel.strength"
+                    [(ngModel)]="characterModel.dexterity"
                     type="number"
-                    id="characterStrength"
-                    name="characterStrength"
+                    id="characterDexterity"
+                    name="characterDexterity"
                     class="form-control mb-3"
                 />
             </div>

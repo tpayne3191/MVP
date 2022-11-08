@@ -19,7 +19,7 @@ export class CharacterService {
   }
 
   update(character: Character): Observable<Character> {
-    return this.http.put<Character>(this.url + '/' + character.id, character);
+    return this.http.put<Character>(this.url + '/', character);
   }
 
   create(character: Character): Observable<Character> {
