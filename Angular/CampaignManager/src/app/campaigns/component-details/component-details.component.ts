@@ -22,7 +22,7 @@ export class ComponentDetailsComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.campaignService.campaigns$.subscribe((campaigns) => {
-      this.campaign = campaigns[id - 1];
+      this.campaign = campaigns.filter(p=>p.id===id)[0];
   });
 
 }

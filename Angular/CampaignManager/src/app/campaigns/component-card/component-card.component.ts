@@ -34,24 +34,24 @@ export class ComponentCardComponent  {
     this.campaigns$ = this.campaignService.campaigns$;
 
   }
-  private mutateCampaigns = () => {
-    this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
-  }
+  // private mutateCampaigns = () => {
+  //   this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
+  // }
 
 
-  handleCampaignSubmit(campaign: Campaign) {
-    if (campaign.id) {
-      this.campaignService.update(campaign).subscribe(() => {
-        this.mutateCampaigns();
-      });
-    } else {
-      this.campaignService.create(campaign).subscribe(() => {
-        this.mutateCampaigns();
-      });
-    }
-    let emptyCampaign: Campaign = {} as Campaign;
-    this.editedCampaign = {...emptyCampaign }
-  }
+  // handleCampaignSubmit(campaign: Campaign) {
+  //   if (campaign.id) {
+  //     this.campaignService.update(campaign).subscribe(() => {
+  //       this.mutateCampaigns();
+  //     });
+  //   } else {
+  //     this.campaignService.create(campaign).subscribe(() => {
+  //       this.mutateCampaigns();
+  //     });
+  //   }
+  //   let emptyCampaign: Campaign = {} as Campaign;
+  //   this.editedCampaign = {...emptyCampaign }
+  // }
   isLoggedIn() {
     return this.authServiceService.isLoggedIn();
   }
