@@ -12,7 +12,6 @@ import { WeaponDetailsComponent } from './weapon/weapon-details/weapon-details.c
 import { WeaponFormComponent } from './weapon/weapon-form/weapon-form.component';
 import { FormsModule } from '@angular/forms';
 import { ComponentFormComponent } from './campaigns/component-form/component-form.component';
-import { ComponentTableComponent } from './campaigns/component-table/component-table.component';
 import { ComponentCardComponent } from './campaigns/component-card/component-card.component';
 import { HomeComponent } from './home/home.component';
 import { ComponentDetailsComponent } from './campaigns/component-details/component-details.component';
@@ -25,6 +24,8 @@ import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './jwt-interceptor.service';
+import { CampaignComponent } from './campaigns/campaign.component';
+
 import { CharacterTableComponent } from './character/character-table/character-table.component';
 import { CharacterTableRowComponent } from './character/character-table-row/character-table-row.component';
 import { CharacterDetailsComponent } from './character/character-details/character-details.component';
@@ -38,9 +39,9 @@ import { CharacterFormComponent } from './character/character-form/character-for
     WeaponTableRowComponent,
     WeaponDetailsComponent,
     WeaponFormComponent,
+    CampaignComponent,
     ComponentDetailsComponent,
     ComponentFormComponent,
-    ComponentTableComponent,
     ComponentCardComponent,
     HomeComponent,
     PlayerComponent,

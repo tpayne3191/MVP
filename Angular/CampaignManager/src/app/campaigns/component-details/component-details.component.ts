@@ -21,11 +21,12 @@ export class ComponentDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.campaignService.campaign$.subscribe((campaigns) => {
+    this.campaignService.campaigns$.subscribe((campaigns) => {
       this.campaign = campaigns[id - 1];
   });
 
 }
+
 
 goBack(): void {
   this.location.back();

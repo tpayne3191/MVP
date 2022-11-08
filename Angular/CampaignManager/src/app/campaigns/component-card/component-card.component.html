@@ -1,18 +1,29 @@
+<div class="row">
 <ng-container *ngIf="campaigns$ | async as campaigns" >
-  <div *ngFor="let campaign of campaigns" class="card" style="width: 18rem;" >
+  <div class="col-8" *ngFor="let campaign of campaigns" class="card" style="width: 18rem;" >
     <div class="card-body campaignContainer"  id="campaign" >
       <div class="campaignCard">
         <figure>
+          <a routerLink = '/campaign-detail/{{campaign.id}}'>
           <h5 style="text-align:center" class="card-title">{{campaign.name}}</h5>
+        </a>
           <div *ngFor="let character of campaign.characters">
             <p class="card-title">{{character.name}}</p>
           </div>
         </figure>
-        <a routerLink = '/campaign-detail/id'>
-          <button (click) = 'handleClick(Op.EDIT)'>Edit</button>
-        </a>
-        <button (click) = 'handleClick(Op.DELETE)'>Delete</button>
+        <button *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+        <button *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>Delete</button>
       </div>
     </div>
   </div>
+  <div class="col-4">
+    <h3 class="text-white">Edit/Add Campaign</h3>
+    <app-component-form
+    *ngIf="isLoggedIn()"
+    [campaignModel]="editedCampaign"
+    (campaignSubmitted)="handleCampaignSubmit($event)"
+  ></app-component-form>
+</div>
 </ng-container>
+</div>
+

@@ -11,6 +11,7 @@ import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PlayerDetailsComponent } from './player/player-details/player-details.component';
+import {CampaignComponent} from './campaigns/campaign.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,8 +20,8 @@ const routes: Routes = [
   { path: 'player-detail/:id', component: PlayerDetailsComponent },
   { path: 'character', component: CharacterComponent },
   { path: 'weapon-detail/:id', component: WeaponDetailsComponent },
-  { path: 'campaign', component: ComponentCardComponent },
-  { path: 'campaign-detail/id', component: ComponentDetailsComponent },
+  { path: 'campaign', component: CampaignComponent },
+  { path: 'campaign-detail/:id', component: ComponentDetailsComponent },
   { path: 'login', component: LoginFormComponent },
   // { path: 'campaign', component: CampaignComponent },
   // { path: 'player', component: PlayerComponent },
