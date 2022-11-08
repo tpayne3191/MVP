@@ -18,6 +18,12 @@ export class AuthServiceService {
     }))
   }
 
+  loginPlayerId(userName: string, password: string, playerId: number) {
+    return this.http.post<User>(this.url + '/' + `${playerId}`, { userName, password }).pipe(tap(res => {
+      this.setSession(res);
+    }))
+  }
+
   private setSession(authResult: any) {
     localStorage.setItem('id_token', authResult.token);
   }

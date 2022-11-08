@@ -14,7 +14,7 @@ export class LoginFormComponent {
 
   handleSubmit() {
     try {
-      this.authService.login(this.user.userName, this.user.password).subscribe(
+      this.authService.loginPlayerId(this.user.userName, this.user.password, 1).subscribe(
         res => this.router.navigateByUrl('/'),
         err => {
           alert('username and/or password is incorrect');
