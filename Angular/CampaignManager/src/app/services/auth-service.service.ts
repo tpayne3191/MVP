@@ -18,6 +18,12 @@ export class AuthServiceService {
     }))
   }
 
+  loginPlayerId(userName: string, password: string, playerId: number) {
+    return this.http.post<User>(this.url + '/' + `${playerId}`, { userName, password }).pipe(tap(res => {
+      this.setSession(res);
+    }))
+  }
+
   private setSession(authResult: any) {
     localStorage.setItem('id_token', authResult.token);
   }
@@ -34,6 +40,17 @@ export class AuthServiceService {
     }
     catch (error) {
       return '';
+    }
+  }
+
+  public getPlayerId(): number {
+    try {
+      let token = jwt_decode(localStorage.getItem('id_token') || '') as any;
+      console.log('token: ', token);
+      return token!.playerId;
+    }
+    catch (error) {
+      return 0;
     }
   }
 
