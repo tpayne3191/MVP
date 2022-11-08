@@ -20,7 +20,7 @@ export class CharacterFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.characters$ = this.characterService.characters$;
-    // this.characterModel.playerId = this.authService.
+    this.characterModel.playerId = this.authService.getPlayerId();
   }
 
   handleSubmit() {
