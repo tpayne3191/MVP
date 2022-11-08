@@ -9,8 +9,8 @@ import { ComponentCardComponent } from './campaigns/component-card/component-car
 import { HomeComponent } from './home/home.component';
 import { CharacterComponent } from './character/character.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { AuthGuard } from './guards/auth.guard';
 import { PlayerDetailsComponent } from './player/player-details/player-details.component';
+import { CharacterDetailsComponent } from './character/character-details/character-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'player', component: PlayerComponent },
   { path: 'player-detail/:id', component: PlayerDetailsComponent },
   { path: 'character', component: CharacterComponent },
+  { path: 'character/:id', component: CharacterDetailsComponent },
   { path: 'weapon-detail/:id', component: WeaponDetailsComponent },
   { path: 'campaign', component: ComponentCardComponent },
   { path: 'campaign-detail/id', component: ComponentDetailsComponent },

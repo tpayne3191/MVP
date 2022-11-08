@@ -72,8 +72,7 @@ namespace Capstone.Core.Entities
         public int PlayerId { get; set; }
         public Player Player { get; set; }
 
-        [Required]
-        public int CampaignId { get; set; }
+        public int? CampaignId { get; set; }
         public Campaign Campaign { get; set; }
 
         // Bridge Connectors - Entity Framework

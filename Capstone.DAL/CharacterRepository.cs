@@ -62,16 +62,20 @@ namespace Capstone.DAL
 
         public Result Update(Character character)
         {
+            var characterResult = ReadById(character.Id);
+
             try
             {
-                _context.Character.Update(character);
-                _context.SaveChanges();
-                return new Result<Character>() { Success = true};
+                if (characterResult.Success)
+                {
+                    _context.Entry(characterResult.Data).CurrentValues.SetValues(character);
+                    _context.SaveChanges();
+                }
+                return new Result<Character>() { Success = true, Data = characterResult.Data };
             }
             catch (Exception e)
             {
                 return new Result<Character>() { Success = false, Message = e.Message };
-
             }
         }
 
@@ -80,10 +84,10 @@ namespace Capstone.DAL
             try
             {
                 Result<Character> character = ReadById(id);
+
                 if (character != null)
                 {
-                    var characterWithChildren = _context.Character
-                        .Include(c => c.CharacterWeapons).Where(c => c.Id == id).First();
+                    var characterWithChildren = _context.Character.Include(c => c.CharacterWeapons).First(c => c.Id == id);
                     _context.Character.Remove(characterWithChildren);
                     _context.SaveChanges();
                 }
