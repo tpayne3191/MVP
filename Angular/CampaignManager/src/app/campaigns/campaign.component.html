@@ -1,5 +1,6 @@
-<div style="display:grid; grid-template-columns: 1fr 1fr  ;">
+<div style="display:grid; grid-template-columns: 1fr 1fr  ;" *ngIf="campaigns$ | async as campaigns">
 <app-component-card
+[campaigns]="campaigns"
 (clicked)="handleClicked($event)">
 </app-component-card>
 </div>
