@@ -140,12 +140,45 @@ namespace Capstone.DAL.Tests
         public void CampaignUpdateTestSuccess()
         {
             // Assign
-
+            Campaign campaign = new Campaign()
+            {
+                Name = "Sword",
+                DateStarted = DateTime.Parse("08/08/2021"),
+                DateEnded = DateTime.Parse("08/10/2021"),
+                Characters = new List<Character>()
+            };
 
             // Act
+            Result<Campaign> expectedResult = new Result<Campaign>()
+            {
+                Data = campaign,
+                Message = null,
+                Success = true
+            };
+            expectedResult.Data.Id = 1;
+            _campaignRepository.Create(campaign);
 
+            Campaign updatedCampaign = new Campaign()
+            {
+                Id = campaign.Id,
+                Name = campaign.Name,
+                DateStarted = campaign.DateStarted,
+                DateEnded = campaign.DateEnded,
+            };
+            expectedResult.Data = updatedCampaign;
+
+            var actualResult = _campaignRepository.Update(updatedCampaign);
             // Assert
-            Assert.Pass();
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+            if (actualResult is Result<Campaign> campaignResult)
+            {
+                Assert.AreEqual(expectedResult.Data.Id, campaignResult.Data.Id);
+                Assert.AreEqual(expectedResult.Data.Name, campaignResult.Data.Name);
+                Assert.AreEqual(expectedResult.Data.DateStarted, campaignResult.Data.DateStarted);
+                Assert.AreEqual(expectedResult.Data.DateEnded, campaignResult.Data.DateEnded);
+
+            }
         }
 
         [Test]
