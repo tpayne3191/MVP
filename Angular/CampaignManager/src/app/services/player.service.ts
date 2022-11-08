@@ -19,7 +19,7 @@ export class PlayerService {
   }
 
   update(player: Player): Observable<Player> {
-    return this.http.put<Player>(this.url + '/', player);
+    return this.http.put<Player>(this.url, player);
   }
 
   create(player: Player): Observable<Player> {

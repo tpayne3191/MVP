@@ -61,11 +61,16 @@ namespace Capstone.DAL
 
         public Result Update(Campaign campaign)
         {
+            var campaignResult = ReadById(campaign.Id);
+
             try
             {
-                _context.Campaign.Update(campaign);
-                _context.SaveChanges();
-                return new Result<Campaign>() { Success = true };
+                if (campaignResult.Success)
+                {
+                    _context.Entry(campaignResult.Data).CurrentValues.SetValues(campaign);
+                    _context.SaveChanges();
+                }
+                return new Result<Campaign>() { Success = true, Data = campaign };
             }
             catch (Exception e)
             {

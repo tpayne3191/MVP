@@ -19,7 +19,7 @@ export class CampaignService {
   }
 
   update(campaign: Campaign): Observable<Campaign> {
-    return this.http.put<Campaign>(this.url + '/' + campaign.id, campaign);
+    return this.http.put<Campaign>(this.url, campaign);
   }
 
   create(campaign: Campaign): Observable<Campaign> {

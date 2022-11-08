@@ -19,4 +19,15 @@ export class AppComponent {
     this.authServiceService.logout();
     this.router.navigateByUrl('/')
   }
+
+  getPlayerId() {
+    const playerId = this.authServiceService.getPlayerId();
+    console.log('player ID: ', playerId);
+  }
+
+  getUsername(): string {
+    console.log('User Name: ', this.authServiceService.getUserName());
+
+    return this.authServiceService.getUserName() || "";
+  }
 }
