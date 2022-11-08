@@ -1,51 +1,57 @@
-<form (ngSubmit)="handleSubmit()" *ngIf="weapons$ | async as weapons" class="text-white">
-  <div>
-    <label for="name">
-        Weapon Name
-    </label>
-    <input
-      [(ngModel)]="weaponModel.name"
-      type="text"
-      id="weaponName"
-      name="weaponName"
-      class="form-control mb-3"
-    />
-  </div>
-  <div>
-    <label for="damage">
-      Weapon Damage
-    </label>
-    <input
-      type="number"
-      id="weaponDamage"
-      name="weaponDamage"
-      [(ngModel)]="weaponModel.damage"
-      class="form-control mb-3"
-    />
-  </div>
-  <div>
-    <label for="range">
-      Weapon Range
-    </label>
-    <input
-      type="number"
-      id="weaponRange"
-      name="weaponRange"
-      [(ngModel)]="weaponModel.range"
-      class="form-control mb-3"
-    />
-  </div>
-  <div>
-    <label for="description">
-      Weapon Description
-    </label>
-    <input
-      type="text"
-      id="weaponDescription"
-      name="weaponDescription"
-      [(ngModel)]="weaponModel.description"
-      class="form-control mb-3"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+<div>
+  <legend class="text-white mb-4">Modify / Create New</legend>
+  <form (ngSubmit)="handleSubmit()" *ngIf="weapons$ | async as weapons" class="text-white">
+    <div>
+      <label for="name">
+          Weapon Name
+      </label>
+      <input
+        [(ngModel)]="weaponModel.name"
+        type="text"
+        id="weaponName"
+        name="weaponName"
+        class="form-control mb-3"
+      />
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <label for="damage">
+          Weapon Damage
+        </label>
+        <input
+          type="number"
+          id="weaponDamage"
+          name="weaponDamage"
+          [(ngModel)]="weaponModel.damage"
+          class="form-control mb-3"
+        />
+      </div>
+      <div class="col-sm-6">
+        <label for="range">
+          Weapon Range
+        </label>
+        <input
+          type="number"
+          id="weaponRange"
+          name="weaponRange"
+          [(ngModel)]="weaponModel.range"
+          class="form-control mb-3"
+        />
+      </div>
+    </div>
+    <div>
+      <label for="description">
+        Weapon Description
+      </label>
+      <input
+        type="text"
+        id="weaponDescription"
+        name="weaponDescription"
+        [(ngModel)]="weaponModel.description"
+        class="form-control mb-3"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>
+

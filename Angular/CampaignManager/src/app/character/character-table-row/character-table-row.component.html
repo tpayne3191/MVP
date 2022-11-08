@@ -1,8 +1,10 @@
-<td>{{character.id}}</td>
-<td><a routerLink="/character-details/{{character.id}}" class="text-decoration-none">{{ character.name }}</a></td>
+<td><a routerLink="/character-details/{{character.id}}" class="text-decoration-none" style="color: #ffc107">
+    <strong>{{ character.name }}</strong>
+</a></td>
+<td>{{ character.level }}</td>
 <td>{{ character.armorClass }}</td>
 <td>{{ character.hitPoints }}</td>
-<td><button (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
-<td><button (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button></td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button></td>
 
 
