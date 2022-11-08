@@ -1,6 +1,14 @@
 <form (ngSubmit)="handleSubmit()">
   <input type="text" name="email" [(ngModel)]="user.userName" />
   <input type="password" name="password" [(ngModel)]="user.password" />
+  <div *ngIf="players$ | async as players" class="text-white">
+    <div *ngFor="let player of players">
+      <label for="{{player.name}}">
+        <input id="{{player.id}}" [value]='player.id' type="radio" name="players" [(ngModel)]="playerId">
+        {{player.name}}
+      </label>
+    </div>
+  </div>
   <button type="submit">Login</button>
 </form>
 
