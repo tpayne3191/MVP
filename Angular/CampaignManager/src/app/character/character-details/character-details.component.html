@@ -1,21 +1,65 @@
-<form class = "col-4">
-    <fieldset disabled>
-      <legend>Character Details</legend>
-    <div >
-      <label for="name">
-          Character Name
-      </label>
-      <input
-        type="text"
-        id="characterName"
-        name="characterName"
-        placeholder="{{character.name}}"
-        class="form-control mb-3"
-      />
+
+<ng-container>
+  <h3 class="card-title mt-2 align-self-center text-white">{{character.name}}</h3>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/Default_Character.png" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body h-100 d-flex flex-column">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action" aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" style="color: #bc2525">About {{character.name}}</h5>
+              </div>
+              <p class="mb-3">Player: {{player.name}}</p>
+              <p class="mb-3">Class: {{character.class}}</p>
+              <p class="mb-3">Race: {{character.race}}</p>
+              <p class="mb-1">Alignment: {{character.alignment}}</p>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" style="color: #bc2525">Character Stats</h5>
+              </div>
+              <p class="mb-3">Level: {{character.level}}</p>
+              <p class="mb-3">Armor Class: {{character.armorClass}}</p>
+              <p class="mb-1">Hit Points: {{character.hitPoints}}</p>
+            </div>
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" style="color: #bc2525">Modifiers</h5>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4">
+                  <p class="mb-1">Strength: {{character.strength}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <p class="mb-1">Dexterity: {{character.dexterity}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <p class="mb-1">Constitution: {{character.constitution}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="mb-1">Intelligence: {{character.intelligence}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <p class="mb-1">Wisdom: {{character.wisdom}}</p>
+                </div>
+                <div class="col-sm-4">
+                  <p class="mb-1">Charisma: {{character.charisma}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button (click)="goBack()" class="btn btn-primary align-self-end mt-auto">Back</button>
+        </div>
+      </div>
     </div>
-    <div>Players Characters link needed</div>
-  </fieldset>
-  <button (click)="goBack()" class="btn btn-primary">Back</button>
-</form>
-  
+  </div>
+</ng-container>
+
+
   

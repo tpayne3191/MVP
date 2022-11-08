@@ -30,6 +30,7 @@ import { CharacterTableComponent } from './character/character-table/character-t
 import { CharacterTableRowComponent } from './character/character-table-row/character-table-row.component';
 import { CharacterDetailsComponent } from './character/character-details/character-details.component';
 import { CharacterFormComponent } from './character/character-form/character-form.component';
+import { CampaignsCharactersComponent } from './campaigns/campaigns-characters/campaigns-characters.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CharacterFormComponent } from './character/character-form/character-for
     CharacterTableComponent,
     CharacterTableRowComponent,
     CharacterDetailsComponent,
-    CharacterFormComponent
+    CharacterFormComponent,
+    CampaignsCharactersComponent
   ],
   imports: [
     BrowserModule,

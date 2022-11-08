@@ -1,0 +1,13 @@
+<h3>{{campaign.name}}</h3>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" ngif = "characters$ | async as characters">
+  <fieldset class="field_set">
+    <legend>Select Campaign Characters:</legend>
+        <select multiple size="10" name="selectedCharacters" [ngModel]="editedCharacters" #selectedCharacters="ngModel">
+            <option *ngFor="let character of characters" [ngValue]="character">
+              {{ character.name }}
+            </option>
+          </select><br>
+        <button>Submit</button>
+        <button type="button" (click)="resetForm(userForm)">Reset</button>
+  </fieldset>
+</form>
