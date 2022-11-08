@@ -23,6 +23,7 @@ export class PlayerFormComponent implements OnInit {
   }
 
   handleSubmit() {
+    console.log()
     this.playerSubmitted.emit(this.playerModel);
   }
 

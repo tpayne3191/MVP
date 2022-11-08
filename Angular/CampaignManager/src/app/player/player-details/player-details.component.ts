@@ -22,7 +22,7 @@ export class PlayerDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.playerService.players$.subscribe((players) => {
-      this.player = players[id - 1];
+      this.player = players.filter(p=>p.id===id)[0];
     });
   }
 
