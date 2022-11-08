@@ -1,57 +1,39 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { CampaignService } from 'src/app/services/campaign.service';
+import { Router } from '@angular/router';
 import Campaign from '../../types/campaign.model';
-import {Operation} from '../../types/operation.model';
-
-
+import { Operation } from '../../types/operation.model';
+import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-component-card',
   templateUrl: './component-card.component.html',
-  styleUrls: ['./component-card.component.css']
+  styleUrls: ['./component-card.component.css'],
 })
-export class ComponentCardComponent  {
-  @Output() clicked: EventEmitter<[Campaign, Operation]> = new EventEmitter<[Campaign,Operation]>();
+export class ComponentCardComponent {
+  @Output() clicked: EventEmitter<[Campaign, Operation]> = new EventEmitter<
+    [Campaign, Operation]
+  >();
   @Input() campaign: Campaign = {} as Campaign;
-
-  handleClick(operation:Operation) {
-    this.clicked.emit([this.campaign, operation]);
-  }
-
+  @Input() campaigns: Campaign[] = [] as Campaign[];
+  editedCampaign: Campaign = {} as Campaign;
   Op = Operation;
-  // editedCampaign: Campaign = {} as Campaign;
-  campaigns$: Observable<Campaign[]> = new Observable<Campaign[]>();
-  constructor(private campaignService: CampaignService) { }
 
-  ngOnInit() {
-    this.campaigns$ = this.campaignService.campaign$;
+  constructor(
+    private campaignService: CampaignService,
+    private authServiceService: AuthServiceService
+  ) {}
+
+  ngOnInit(): void {
 
   }
-  // private mutateCampaigns = () => {
-  //   this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
-  // }
-  // handleClicked([campaign, operation]: [Campaign, Operation]) {
-  //   console.log(campaign);
-  //   if (operation === 'edit') {
-  //     this.editedCampaign = { ...campaign };
-  //   } else if (operation === 'delete') {
-  //     this.campaignService.delete(campaign).subscribe(() => {
-  //       this.mutateCampaigns();
-  //     });
-  //   }
-  // }
 
-  // handleCampaignSubmit(campaign: Campaign) {
-  //   if (campaign.id) {
-  //     this.campaignService.update(campaign).subscribe(() => {
-  //       this.mutateCampaigns();
-  //     });
-  //   } else {
-  //     this.campaignService.create(campaign).subscribe(() => {
-  //       this.mutateCampaigns();
-  //     });
-  //   }
-  // }
+  handleClick(campaign: Campaign, operation: Operation): void {
+    this.clicked.emit([campaign, operation]);
+  }
 
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
+  }
 }

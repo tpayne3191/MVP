@@ -65,13 +65,12 @@ namespace Capstone.DAL
 
             try
             {
-                Result<Player> createResult = new Result<Player>();
                 if (playerResult.Success)
                 {
-                    var deleteResult = Delete(player.Id);
-                    createResult = Create(player);
+                    _context.Entry(playerResult.Data).CurrentValues.SetValues(player);
+                    _context.SaveChanges();
                 }
-                return new Result<Player>() { Success = createResult.Success, Data = createResult.Data };
+                return new Result<Player>() { Success = true, Data = player };
             }
             catch (Exception e)
             {

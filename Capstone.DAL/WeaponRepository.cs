@@ -73,7 +73,7 @@ namespace Capstone.DAL
                     _context.Entry(weaponResult.Data).CurrentValues.SetValues(weapon);
                     _context.SaveChanges();
                 }
-                return new Result<Weapon>() { Success = true, Data = weaponResult.Data };
+                return new Result<Weapon>() { Success = true, Data = weapon };
             }
             catch (Exception e)
             {

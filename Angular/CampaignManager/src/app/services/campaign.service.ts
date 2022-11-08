@@ -12,14 +12,14 @@ export class CampaignService {
   private url = 'https://localhost:5001/api/campaigns';
 
   // Load the initial data as an Observable
-  campaign$: Observable<Campaign[]> = this.http.get<Campaign[]>(this.url);
+  campaigns$: Observable<Campaign[]> = this.http.get<Campaign[]>(this.url);
 
   delete(campaign: Campaign): Observable<null> {
     return this.http.delete<null>(this.url + '/' + campaign.id);
   }
 
   update(campaign: Campaign): Observable<Campaign> {
-    return this.http.put<Campaign>(this.url + '/' + campaign.id, campaign);
+    return this.http.put<Campaign>(this.url, campaign);
   }
 
   create(campaign: Campaign): Observable<Campaign> {

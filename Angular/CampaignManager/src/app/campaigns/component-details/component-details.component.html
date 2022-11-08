@@ -1,11 +1,49 @@
-<h1 class="d-flex justify-content-center mt-3 text-white">Campaigns</h1>
-<table class="table table-striped" *ngIf="campaigns$ | async as campaigns" id="campaign">
-  <tbody class="">
-    <tr
-      *ngFor="let character of campaign.characters">
-      <td>{{campaign.characters}}</td>
-    </tr>
-  </tbody>
-</table>
-<app-component-form></app-component-form>
+<form class = "col-4">
+  <fieldset  disabled>
+    <legend class="text-white">Campaign Details</legend>
+  <div >
+    <label class="text-white" for="date">
+        Date Started
+    </label>
+    <input
+      type="text"
+      id="dateStarted"
+      name="dateStarted"
+      placeholder="{{campaign.dateStarted}}"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label class="text-white" for="date">
+      Date Ended
+    </label>
+    <input
+      type="text"
+      id="dateEnded"
+      name="dateEnded"
+      placeholder="{{campaign.dateEnded}}"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>
+    <label class="text-white" for="name">
+      Campaign Name
+    </label>
+    <input
+      type="text"
+      id="campaignName"
+      name="campaignName"
+      placeholder="{{campaign.name}}"
+      class="form-control mb-3"
+    />
+  </div>
+
+  <div>Players Characters link needed</div>
+</fieldset>
 <button (click)="goBack()" class="btn btn-primary">Back</button>
+</form>
+
+
+
