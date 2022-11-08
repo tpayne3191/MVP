@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -37,10 +38,9 @@ namespace Capstone.Core.Entities
         [Required]
         [MaxLength(50, ErrorMessage = "Class must be valid string between 0 - 50 characters.")]
         public string Class { get; set; }
-
-        [Required]
+        
         [MaxLength(250, ErrorMessage = "Image URL must be valid URL between 0 - 250 characters.")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         // ---------------------------------------------- STATS ---------------------------------------------- 
         [Required]
