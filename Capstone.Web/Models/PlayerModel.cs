@@ -5,7 +5,7 @@ namespace Capstone.Web.Models
     public class PlayerModel
     {
         [Key]
-        public int PlayerId { get; set; }
+        public int id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }

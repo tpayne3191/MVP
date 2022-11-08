@@ -6,7 +6,7 @@ namespace Capstone.Web.Models
     public class CampaignModel
     {
         [Key]
-        public int CampaignId { get; set; }
+        public int id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
