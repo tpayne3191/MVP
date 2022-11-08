@@ -1,1 +1,13 @@
-<app-component-card (clicked)="handleClicked($event)"></app-component-card>
+<div style="display:grid; grid-template-columns: 1fr 1fr  ;">
+<app-component-card
+(clicked)="handleClicked($event)">
+</app-component-card>
+</div>
+<div class="Add" style = "position:absolute; right:450px; top:215px;" >
+<h3 class="text-white">Edit/Add Campaign</h3>
+<app-component-form
+*ngIf="isLoggedIn()"
+[campaignModel]="editedCampaign"
+(campaignSubmitted)="handleCampaignSubmit($event)"
+></app-component-form>
+</div>
