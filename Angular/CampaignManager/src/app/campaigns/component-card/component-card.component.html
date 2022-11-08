@@ -13,6 +13,9 @@
               <li >{{character.name}}</li>
             </ul>
           </div>
+          <a routerLink = '/campaigns-characters/{{campaign.id}}'>
+          <h6 style="text-align:center" class="card-title">Add Characters</h6>
+        </a>
         </figure>
         <div style="text-align:center">
           <button style="margin:5px;" *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
