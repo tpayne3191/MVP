@@ -50,7 +50,7 @@ GO
 CREATE TABLE [Character](
     Id int primary key identity(1,1),
     PlayerId int not null,
-    CampaignId int not null,
+    CampaignId int null,
 	[Name] varchar(50) not null,
     [Level] int not null default(1),
     ArmorClass int not null default(1),
@@ -64,7 +64,7 @@ CREATE TABLE [Character](
     Race varchar(50) not null,
     Alignment varchar(50) not null,
     Class varchar(50) not null,
-    [Image] varchar(250) not null
+    [Image] varchar(250) null
     constraint fk_Character_Player_PlayerId
         foreign key(PlayerId)
         references Player(Id),
