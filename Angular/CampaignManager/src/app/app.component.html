@@ -62,6 +62,7 @@
                   </li>
                   <li>
                     <a
+                        *ngIf="!isLoggedIn()"
                         class="dropdown-item"
                         href="/login"
                         routerLinkActive="active"
