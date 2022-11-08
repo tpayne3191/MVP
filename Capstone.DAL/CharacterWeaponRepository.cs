@@ -16,7 +16,7 @@ namespace Capstone.DAL
             _context = context;
         }
 
-        public Result Create(CharacterWeapon model)
+        public Result<CharacterWeapon> Create(CharacterWeapon model)
         {
             try
             {

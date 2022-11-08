@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#nullable enable
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Capstone.Core.Entities;
 
@@ -11,8 +12,7 @@ namespace Capstone.Web.Models
         public int Id { get; set; }
         [Required]
         public int PlayerId { get; set; }
-        [Required]
-        public int CampaignId { get; set; }
+        public int? CampaignId { get; set; }
 
         // About 
         [Required]
@@ -32,9 +32,8 @@ namespace Capstone.Web.Models
         [Required]
         [MaxLength(50)]
         public string Class { get; set; }
-        [Required]
         [MaxLength(250)]
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         // Stats
         [Required]
