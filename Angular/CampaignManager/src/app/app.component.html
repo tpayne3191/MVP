@@ -73,9 +73,12 @@
                 </ul>
               </li>
             </ul>
-          </div>
-          <div class="float-end">
-            <button *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-outline-light">Sign out</button>
+            <span class="text-white px-3">
+                Player: {{ getUsername() }}
+            </span>
+            <span class="navbar-text p-0">
+                <button *ngIf="isLoggedIn()" (click)="logout()" class="btn btn-outline-light">Sign out</button>
+            </span>
           </div>
         </div>
       </nav>
