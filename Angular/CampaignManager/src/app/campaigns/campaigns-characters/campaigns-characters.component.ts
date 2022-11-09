@@ -53,17 +53,16 @@ export class CampaignsCharactersComponent implements OnInit {
     console.log('onFormSubmit', charactersToEnroll)
     for(const characterAdd of charactersToEnroll)
     {
-      characterAdd.campaignId = this.campaign.id;
-      this.charactersService.update(characterAdd).subscribe(() => {
-        this.mutateCharacters();
-      });
+        characterAdd.campaignId = this.campaign.id;
+        this.charactersService.update(characterAdd).subscribe(() => {
+          this.mutateCharacters();
+        });
     }
     this.goBack();
   }
 
   private mutateCharacters = () => {
     this.characters$ = this.characters$.pipe(map((characters) => characters));
-    this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
   };
 
   resetForm(form: NgForm) {
@@ -71,6 +70,7 @@ export class CampaignsCharactersComponent implements OnInit {
   }
 
   goBack(): void {
+    window.location.reload();
     this.location.back();
   }
 }
