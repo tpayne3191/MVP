@@ -34,28 +34,35 @@ export class PlayerTableComponent implements OnInit {
 
 
   handleClicked([player, operation]: [Player, Operation]) {
-    if (operation === 'edit') {
-      this.editedPlayer = { ...player };
-    } else if (operation === 'delete') {
-      this.playerService.delete(player).subscribe(() => {
-        this.mutatePlayers();
-      });
-    }
+
+      if (operation === 'edit') {
+        this.editedPlayer = { ...player };
+      } else if (operation === 'delete') {
+        this.playerService.delete(player).subscribe(() => {
+          this.mutatePlayers();
+        });
+      }
+
   }
 
   handlePlayerSubmit(player: Player) {
-    console.log ('onSubmit in player table', player)
-    if (player.id) {
-      this.playerService.update(player).subscribe(() => {
-        this.mutatePlayers();
-      });
-    } else {
-      this.playerService.create(player).subscribe(() => {
-        this.mutatePlayers();
-      });
+
+    if(player.name && player.name.trim().length>0){
+      if (player.id) {
+        this.playerService.update(player).subscribe(() => {
+          this.mutatePlayers();
+        });
+      } else {
+        this.playerService.create(player).subscribe(() => {
+          this.mutatePlayers();
+        });
+      }
+      let emptyPlayer: Player = {} as Player;
+      this.editedPlayer = {...emptyPlayer }
     }
-    let emptyPlayer: Player = {} as Player;
-    this.editedPlayer = {...emptyPlayer }
+    else{
+      window.alert("Player Name cannot be blank. Please try again.")
+    }
   }
 
   goBack(): void {
