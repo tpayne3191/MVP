@@ -30,7 +30,7 @@ namespace Capstone.Web.Controllers
                 return BadRequest("Invalid request");
             }
 
-            if (_authRepository.ValidateUserName(Guid.Parse(user.UserName), user.Password, id)) //TODO: have this return a user, store in a variable and check against if null
+            if (_authRepository.ValidateUserName(user.UserName, user.Password, id)) //TODO: have this return a user, store in a variable and check against if null
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

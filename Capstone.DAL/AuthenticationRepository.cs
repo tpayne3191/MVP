@@ -55,17 +55,42 @@ namespace Capstone.DAL
 
         public Result<List<LoginItem>> GetAll()
         {
-            Result<List<LoginItem>> result = new Result<List<LoginItem>>();
+            Result<List<LoginItem>> result = new Result<List<LoginItem>>()
+            {
+                Data = new List<LoginItem>(),
+                Success = true,
+                Message = "Get all Login Items"
+            };
 
             try
             {
-                using (var context = new AppDbContext())
+                using (var cn = new SqlConnection(ConfigurationManager.GetAuthConnectionstring()))
                 {
-                    var loginList = context.LoginItem.ToList();
-
-                    if (loginList.Count > 0)
+                    var cmd = new SqlCommand("GetAllLogins", cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    int tempPlayerId = 0;
+                    
+                    cn.Open();
+                    using (var dr = cmd.ExecuteReader())
                     {
-                        result.Data = loginList;
+                        while (dr.Read())
+                        {
+                            var item = new LoginItem();
+
+                            item.Id = Guid.Parse(dr["Id"].ToString());
+                            item.UserName = dr["UserName"].ToString();
+                            item.Password = dr["Password"].ToString();
+                            item.CreationDate = (DateTime)dr["DateCreated"];
+                            Int32.TryParse(dr["PlayerId"].ToString(), out tempPlayerId);
+                            item.PlayerId = tempPlayerId;
+
+                            result.Data.Add(item);
+                        }
+                    }
+                    cn.Close();
+
+                    if (result.Data.Count > 0)
+                    {
                         result.Success = true;
                     }
                     else
@@ -90,7 +115,7 @@ namespace Capstone.DAL
             throw new NotImplementedException();
         }
 
-        public bool ValidateUserName(Guid userId, string password, int playerId)
+        public bool ValidateUserName(string userId, string password, int playerId)
         {
             Result<LoginItem> Result = new Result<LoginItem>();
 

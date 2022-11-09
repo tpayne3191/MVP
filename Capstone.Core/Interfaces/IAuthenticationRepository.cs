@@ -12,6 +12,6 @@ namespace Capstone.Core.Interfaces
         public Result Delete(Guid loginItemUserId);
         public Result<LoginItem> Get(Guid loginItemUserId);
         public Result<List<LoginItem>> GetAll();
-        public bool ValidateUserName(Guid userId, string password, int playerId);
+        public bool ValidateUserName(string userId, string password, int playerId);
     }
 }

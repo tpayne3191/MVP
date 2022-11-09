@@ -189,4 +189,23 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE GetAllLogins
+	-- Add the parameters for the stored procedure here
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select
+		l.Id,
+		l.UserName,
+		l.[Password],
+		l.DateCreated,
+		l.PlayerId
+	From [Login] As l
+END
+GO
+
 Exec LoginVerification @userId = 'johncitizen', @password = 'abc@123';
