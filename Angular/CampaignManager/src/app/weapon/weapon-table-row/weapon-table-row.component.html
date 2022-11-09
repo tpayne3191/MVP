@@ -1,10 +1,12 @@
 <td>
-  <a routerLink="/weapon-detail/{{weapon.id}}" class="text-decoration-none">
-    {{ weapon.name }}
+  <a routerLink="/weapon-detail/{{weapon.id}}" class="text-decoration-none" style="color: #ffc107">
+    <strong>
+      {{ weapon.name }}
+    </strong>
   </a>
 </td>
 <td>{{ weapon.damage }}</td>
 <td>{{ weapon.range }}</td>
 <td>{{ weapon.description }}</td>
-<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button></td>
-<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>Delete</button></td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button></td>

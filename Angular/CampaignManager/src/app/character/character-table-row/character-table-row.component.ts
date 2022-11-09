@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import Character from 'src/app/types/character.model';
 import { Operation } from 'src/app/types/operation.model';
 
@@ -12,7 +13,13 @@ export class CharacterTableRowComponent {
   @Input() character : Character = {} as Character;
   Op = Operation;
 
+  constructor(private authServiceService: AuthServiceService) { }
+
   handleClick(operation: Operation): void {
     this.clicked.emit([this.character, operation]);
+  }
+
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 }
