@@ -28,45 +28,40 @@ export class CampaignsCharactersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const campaignId: number = 4;//Number(this.route.snapshot.paramMap.get('id'));
-    this.charactersService.characters$.subscribe((characters) =>
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
+    this.campaignsService.campaigns$.subscribe((campaigns) =>
     {
-      this.characters = characters;
-
-      let i = -1;
-      for(const characterCheck of this.characters)
+      this.charactersService.characters$.subscribe((characters) =>
       {
-        i++;
-        if(!characterCheck.campaignId)
+        this.campaign = campaigns.find((c) => c.id === id ) || {} as Campaign;
+        this.characters = characters;
+        let i = 0;
+        for(i=this.characters.length-1;i >-1;i--)
         {
-          this.characters.splice(i,1);
+          if(this.characters[i].campaignId !== null){
+            this.characters.splice(i,1);
+          }
         }
-      }
+       });
     });
-    console.log('onInit', this.characters)
+    console.log('onInit', this.characters.length)
   }
 
   onFormSubmit(form: NgForm) {
     let charactersToEnroll: Character[] = form.controls['selectedCharacters'].value;
 
-    this.charactersService.characters$.subscribe(() =>
-      {
-        console.log('onFormSubmit', charactersToEnroll)
-          for(const characterAdd of charactersToEnroll)
-          {
-            characterAdd.campaignId = this.campaign.id;
-            console.log('onFormSubmit after for loop', characterAdd)
-            this.charactersService.update(characterAdd).subscribe(() => {
-              this.mutateProducts();
-            });
-          }
+    console.log('onFormSubmit', charactersToEnroll)
+    for(const characterAdd of charactersToEnroll)
+    {
+      characterAdd.campaignId = this.campaign.id;
+      this.charactersService.update(characterAdd).subscribe(() => {
+        this.mutateCharacters();
       });
-
-    // this.location.back();
-    //this.goBack();
+    }
+    this.goBack();
   }
 
-  private mutateProducts = () => {
+  private mutateCharacters = () => {
     this.characters$ = this.characters$.pipe(map((characters) => characters));
     this.campaigns$ = this.campaigns$.pipe(map((campaigns) => campaigns));
   };

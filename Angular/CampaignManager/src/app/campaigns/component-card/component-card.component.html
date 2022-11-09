@@ -13,7 +13,7 @@
               <li >{{character.name}}</li>
             </ul>
           </div>
-          <a routerLink = '/campaigns-characters/{{campaign.id}}'>
+          <a *ngIf="isLoggedIn()" routerLink = '/campaigns-characters/{{campaign.id}}'>
           <h6 style="text-align:center" class="card-title">Add Characters</h6>
         </a>
         </figure>
