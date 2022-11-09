@@ -4,6 +4,7 @@ import { CharacterService } from 'src/app/services/character.service';
 import Character from 'src/app/types/character.model';
 import { Location } from '@angular/common';
 import { Operation } from 'src/app/types/operation.model';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-character-table',
@@ -18,6 +19,7 @@ export class CharacterTableComponent implements OnInit {
 
   constructor(
     private characterService: CharacterService,
+    private authServiceService: AuthServiceService,
     private location: Location
     ) { }
 
@@ -56,5 +58,9 @@ export class CharacterTableComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 }

@@ -12,6 +12,7 @@ import { AuthServiceService } from '../../services/auth-service.service';
   styleUrls: ['./component-card.component.css'],
 })
 export class ComponentCardComponent {
+  campaigns$: Observable<Campaign[]> = new Observable<Campaign[]>();
   @Output() clicked: EventEmitter<[Campaign, Operation]> = new EventEmitter<
     [Campaign, Operation]
   >();
