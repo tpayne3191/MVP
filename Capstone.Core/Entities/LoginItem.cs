@@ -10,6 +10,6 @@ namespace Capstone.Core.Entities
         public string UserName { get; set; }
         public string Password { get; set; }
         public DateTime CreationDate { get; set; }
-        public bool IsValid { get; set; }
+        public int? PlayerId { get; set; }
     }
 }

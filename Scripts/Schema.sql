@@ -96,14 +96,16 @@ Create Table [Login]
 	UserName varchar (256) not null,
 	[Password] nvarchar (256) not null,
 	DateCreated date not null Default GetDate(),
-	IsValid bit not null,
 	PlayerId int null
 );
 
 
 Begin Tran
-Insert Into [Login] (UserName, [Password], Id, IsValid) 
-Values ('johncitizen',	PwdEncrypt('abc@123'), NewID(), 1)
+Insert Into [Login] (UserName, [Password], Id) 
+Values 
+	('johncitizen',	PwdEncrypt('abc@123'), NewID()),
+	('ErnestKing',	PwdEncrypt('MySpecialPassword!23'), NewID())
+
 
 Select * From [Login]
 Commit;
@@ -147,12 +149,43 @@ BEGIN
 		l.Id,
 		l.UserName,
 		l.DateCreated,
-		l.IsValid,
 		l.PlayerId
 	From [Login] As l
 	Where l.UserName = @userId
 		And PWDCOMPARE(@password, l.[Password]) = 1
-		And l.IsValid = 1
+END
+GO
+
+CREATE PROCEDURE AddLogin
+	-- Add the parameters for the stored procedure here
+	@userId nvarchar (265),
+	@password nvarchar (256),
+	@playerId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Insert Into [Login] (UserName, [Password], Id, PlayerId)
+	Values 
+		(@userId,	PwdEncrypt(@password), NewID(), @playerId)
+END
+GO
+
+CREATE PROCEDURE DeleteLogin
+	-- Add the parameters for the stored procedure here
+	@userId nvarchar (265)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Delete From [Login]
+	Where UserName = @userId
 END
 GO
 

@@ -57,7 +57,7 @@ namespace Capstone.DAL
             throw new NotImplementedException();
         }
 
-        public bool ValidateUserName(string userId, string password)
+        public bool ValidateUserName(string userId, string password, int playerId)
         {
             Result<LoginItem> Result = new Result<LoginItem>();
 
@@ -81,7 +81,7 @@ namespace Capstone.DAL
                             item.Id = Guid.Parse(dr["Id"].ToString());
                             item.UserName = dr["UserName"].ToString();
                             item.CreationDate = (DateTime)dr["DateCreated"];
-                            item.IsValid = bool.Parse(dr["IsValid"].ToString());
+                            item.PlayerId = playerId;
 
                             Result.Data = item;
                         }
