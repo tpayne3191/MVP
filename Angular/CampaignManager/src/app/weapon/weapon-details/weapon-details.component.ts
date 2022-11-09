@@ -22,7 +22,7 @@ export class WeaponDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.weaponService.weapon$.subscribe((weapons) => {
-      this.weapon = weapons[id - 1];
+      this.weapon = weapons.filter(w=>w.id===id)[0];
     });
   }
 
