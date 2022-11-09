@@ -309,6 +309,22 @@ namespace Capstone.DAL.Tests
                 Weapon = characterWeapon.Weapon,
                 Character = characterWeapon.Character
             };
+
+            expectedResult.Data = updatedCharacterWeapon;
+
+            var actualResult = _characterWeaponRepository.Update(updatedCharacterWeapon);
+
+            Assert.AreEqual(expectedResult.Success, actualResult.Success);
+            Assert.AreEqual(expectedResult.Message, actualResult.Message);
+
+            if (actualResult is Result<CharacterWeapon> characterWeaponResult)
+            {
+                Assert.AreEqual(expectedResult.Data.CharacterId, characterWeaponResult.Data.CharacterId);
+                Assert.AreEqual(expectedResult.Data.WeaponId, characterWeaponResult.Data.WeaponId);
+                Assert.AreEqual(expectedResult.Data.Weapon, characterWeaponResult.Data.Weapon);
+                Assert.AreEqual(expectedResult.Data.Character, characterWeaponResult.Data.Character);
+                Assert.AreEqual(expectedResult.Data.Quantity, characterWeaponResult.Data.Quantity);
+            }
         }
 
         [Test]

@@ -79,11 +79,16 @@ namespace Capstone.DAL
 
         public Result Update(CharacterWeapon model)
         {
+            var characterWeaponResult = ReadById(model.CharacterId, model.WeaponId);
             try
             {
-                _context.CharacterWeapon.Update(model);
-                _context.SaveChanges();
-                return new Result<CharacterWeapon>() { Success = true };
+                if (characterWeaponResult.Success)
+                {
+                    _context.Entry(characterWeaponResult.Data).CurrentValues.SetValues(model);
+                    _context.SaveChanges();
+                }
+                return new Result<CharacterWeapon>() { Success = true, Data = model };
+
             }
             catch (Exception e)
             {
