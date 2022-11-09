@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using Capstone.Core;
 using Capstone.Core.Entities;
@@ -16,12 +17,12 @@ namespace Capstone.DAL
             throw new NotImplementedException();
         }
 
-        public Result Delete(string loginItemId)
+        public Result Delete(Guid loginItemId)
         {
             throw new NotImplementedException();
         }
 
-        public Result<LoginItem> Get(string loginItemUserId)
+        public Result<LoginItem> Get(Guid loginItemUserId)
         {
             var Result = new Result<LoginItem>();
 
@@ -52,12 +53,44 @@ namespace Capstone.DAL
             return Result;
         }
 
+        public Result<List<LoginItem>> GetAll()
+        {
+            Result<List<LoginItem>> result = new Result<List<LoginItem>>();
+
+            try
+            {
+                using (var context = new AppDbContext())
+                {
+                    var loginList = context.LoginItem.ToList();
+
+                    if (loginList.Count > 0)
+                    {
+                        result.Data = loginList;
+                        result.Success = true;
+                    }
+                    else
+                    {
+                        result.Success = false;
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Success = false;
+                result.Message = e.Message;
+                
+                return result;
+            }
+        }
+
         public Result<LoginItem> Update(LoginItem loginItem)
         {
             throw new NotImplementedException();
         }
 
-        public bool ValidateUserName(string userId, string password, int playerId)
+        public bool ValidateUserName(Guid userId, string password, int playerId)
         {
             Result<LoginItem> Result = new Result<LoginItem>();
 
