@@ -7,6 +7,7 @@ import Campaign from 'src/app/types/campaign.model';
 import Character from 'src/app/types/character.model';
 import { CharacterService } from 'src/app/services/character.service';
 import { CampaignService } from 'src/app/services/campaign.service';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-campaigns-characters',
@@ -25,6 +26,7 @@ export class CampaignsCharactersComponent implements OnInit {
     private campaignsService: CampaignService,
     private route: ActivatedRoute,
     private location: Location,
+    private authServiceService: AuthServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +58,8 @@ export class CampaignsCharactersComponent implements OnInit {
         characterAdd.campaignId = this.campaign.id;
         this.charactersService.update(characterAdd).subscribe(() => {
           this.mutateCharacters();
-        });
+          window.location.reload();;
+        })
     }
     this.goBack();
   }
@@ -72,5 +75,9 @@ export class CampaignsCharactersComponent implements OnInit {
   goBack(): void {
     window.location.reload();
     this.location.back();
+  }
+
+  isLoggedIn() {
+    return this.authServiceService.isLoggedIn();
   }
 }

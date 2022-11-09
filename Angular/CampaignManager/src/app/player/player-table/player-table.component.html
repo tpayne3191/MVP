@@ -4,7 +4,6 @@
     <table class="table table-hover" *ngIf="players$ | async as players" id="playerTable">
       <thead class="table-borderless">
         <tr class="text-white">
-          <!-- <th>Id</th> -->
           <th>Name</th>
           <th *ngIf="isLoggedIn()">Phone</th>
           <th *ngIf="isLoggedIn()">Email</th>
