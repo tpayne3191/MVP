@@ -52,7 +52,7 @@ namespace Capstone.DAL
 
                 var config = builder.Build();
 
-                _authConnectionString = config["AuthConnectionString:CampaignManagerLoginDB"];
+                _authConnectionString = config["ConnectionStrings:CampaignManager_DB"];
             }
 
             return _authConnectionString;
