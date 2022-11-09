@@ -1,4 +1,4 @@
-<form (ngSubmit)="handleSubmit()" *ngIf="players$ | async as players">
+<form #userForm="ngForm" (ngSubmit)="handleSubmit()" *ngIf="players$ | async as players">
   <fieldset class="field_set">
     <legend class="mb-4">Edit / Add Player</legend>
   <div>
@@ -52,7 +52,8 @@
       class="form-control mb-3"
     />
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button style="margin:5px;" type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button style="margin:5px;" class ="btn btn-danger mt-3" type="button" (click)="resetForm(userForm)">Reset</button>
   </fieldset>
 </form>
 

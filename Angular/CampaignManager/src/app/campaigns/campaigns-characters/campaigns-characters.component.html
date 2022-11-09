@@ -1,13 +1,13 @@
 <form *ngIf="isLoggedIn()" #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)" style="text-align:center">
-  <fieldset class="field_set">
+  <fieldset class="field_set" >
     <legend>Select Characters for <br>{{campaign.name}}:</legend>
-        <select *ngIf="characters.length>0" class="col-2" multiple size="10" name="selectedCharacters" [ngModel]="editedCharacters" #selectedCharacters="ngModel">
+        <select style = "filter: drop-shadow(5px 5px 4px #bc2525)" *ngIf="characters.length>0" class="col-2" multiple size="10" name="selectedCharacters" [ngModel]="editedCharacters" #selectedCharacters="ngModel">
             <option *ngFor="let character of characters" [ngValue]="character">
               {{ character.name }}
             </option>
           </select><br>
-          <div *ngIf="characters.length<=0" class="text-decoration-none dflex-justify-content-center" style="color: #ffc107">No Characters found</div>
-        <button *ngIf="characters.length>0" style="margin:5px;" class ="btn btn-success btn-sm">Submit</button>
+          <div *ngIf="characters.length<=0" class="text-decoration-none dflex-justify-content-center" style="color: whitesmoke">No Characters found</div>
+        <button *ngIf="characters.length>0" style="margin:5px;" class ="btn btn-primary btn-sm">Submit</button>
         <button *ngIf="characters.length>0" style="margin:5px;" class ="btn btn-danger btn-sm" type="button" (click)="resetForm(userForm)">Reset</button>
         <button style="margin:5px;" class="btn btn-primary btn-sm" (click)="goBack()" >Back</button>
   </fieldset>

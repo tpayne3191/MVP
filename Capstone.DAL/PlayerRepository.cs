@@ -5,6 +5,7 @@ using System.Text;
 using Capstone.Core;
 using Capstone.Core.Entities;
 using Capstone.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Capstone.DAL
 {
@@ -85,7 +86,10 @@ namespace Capstone.DAL
                 Result<Player> Player = ReadById(id);
                 if (Player != null)
                 {
-                    _context.Player.Remove(Player.Data);
+                    var playerWithChildren = _context.Player
+                        .Include(p => p.Characters)
+                        .ThenInclude(c => c.CharacterWeapons).Where(p => p.Id == id).FirstOrDefault();
+                    _context.Player.Remove(playerWithChildren);
                     _context.SaveChanges();
                 }
 
