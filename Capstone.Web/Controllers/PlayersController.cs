@@ -48,6 +48,10 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Add(PlayerModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Player player = new Player
             {
                 Id = model.id,
@@ -63,6 +67,7 @@ namespace Capstone.Web.Controllers
             {
                 return Ok(result.Data);
             }
+            
 
             return BadRequest(result.Message);
         }
@@ -71,6 +76,11 @@ namespace Capstone.Web.Controllers
         [HttpPut]
         public IActionResult Edit(PlayerModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
+
             Player player = new Player()
             {
                 Id = model.id,
@@ -86,7 +96,7 @@ namespace Capstone.Web.Controllers
             {
                 return Ok();
             }
-
+            
             return BadRequest(result.Message);
         }
 

@@ -48,6 +48,10 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Add(CampaignModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Campaign campaign = new Campaign
             {
                 Id = model.id,
@@ -70,6 +74,10 @@ namespace Capstone.Web.Controllers
         [HttpPut]
         public IActionResult Edit(CampaignModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Campaign campaign = new Campaign()
             {
                 Id = model.id,

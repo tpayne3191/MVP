@@ -48,6 +48,10 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Add(WeaponModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Weapon weapon = new Weapon()
             {
                 Id = model.id,
@@ -71,6 +75,10 @@ namespace Capstone.Web.Controllers
         [HttpPut]
         public IActionResult Edit(WeaponModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Weapon weapon = new Weapon()
             {
                 Id = model.id,

@@ -23,11 +23,11 @@ export class CharacterDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location
   ) {}
-  
+
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.characterService.characters$.subscribe((characters) => {
-      this.character = characters[id - 1];
+      this.character = characters.filter(p=>p.id===id)[0];
     });
     this.player.name = this.authService.getUserName();
   }
