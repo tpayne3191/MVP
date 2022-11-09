@@ -46,7 +46,7 @@ export class CharacterTableComponent implements OnInit {
       if (character.id) {
       this.characterService.update(character).subscribe(() => {
         this.mutateCharacters();
-      });
+      }, err => console.log(err));
     } else {
       this.characterService.create(character).subscribe(() => {
         this.mutateCharacters();

@@ -73,7 +73,7 @@
                 </ul>
               </li>
             </ul>
-            <span class="text-white px-3">
+            <span *ngIf="isLoggedIn()" class="text-white px-3">
                 Player: {{ getUsername() }}
             </span>
             <span class="navbar-text p-0">
