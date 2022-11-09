@@ -24,5 +24,11 @@ namespace Capstone.Web.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Login()
+        {
+            return Redirect("http://localhost:4200/login");
+        }
     }
 }
