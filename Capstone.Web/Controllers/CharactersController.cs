@@ -78,7 +78,6 @@ namespace Capstone.Web.Controllers
 
             return BadRequest(result.Message);
         }
-
         [Authorize]
         [HttpPut]
         public IActionResult Edit(CharacterModel model)
