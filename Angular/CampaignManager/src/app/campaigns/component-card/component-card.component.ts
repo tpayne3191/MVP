@@ -27,7 +27,7 @@ export class ComponentCardComponent {
   ) {}
 
   ngOnInit(): void {
-    this.campaigns$ = this.campaignService.campaigns$;
+
   }
 
   handleClick(campaign: Campaign, operation: Operation): void {
