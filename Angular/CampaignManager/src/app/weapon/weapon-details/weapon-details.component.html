@@ -1,6 +1,6 @@
-<h1 class="d-flex justify-content-center mt-3">Weapons</h1>
-<table class="table table-striped text-white">
-  <thead>
+<legend class="text-white">Weapon Detail</legend>
+<table class="table table-hover text-white">
+  <thead class="table-borderless">
     <tr>
       <th>Weapon Name</th>
       <th>Damage</th>
@@ -9,15 +9,18 @@
     </tr>
   </thead>
   <tbody>
-    <td>{{weapon.name}}</td>
-    <td>{{weapon.damage}}</td>
-    <td>{{weapon.range}}</td>
-    <td>{{weapon.description}}</td>
+    <tr class="align-middle text-white">
+      <td>{{weapon.name}}</td>
+      <td>1d{{weapon.damage}}</td>
+      <td>{{weapon.range}} ft</td>
+      <td>{{weapon.description}}</td>
+    </tr>
+    
     <tr *ngFor="let weapon of weapon.characterWeapons">
-        <td>{{ weapon.characterId }}</td>
-        <td>{{ weapon.weaponId }}</td>
-        <td>{{ weapon.quantity }}</td>
-      </tr>
+      <td>{{ weapon.characterId }}</td>
+      <td>{{ weapon.weaponId }}</td>
+      <td>{{ weapon.quantity }}</td>
+    </tr>
   </tbody>
 </table>
 <button (click)="goBack()" class="btn btn-primary">Back</button>
