@@ -1,37 +1,29 @@
 <div class="row text-white" >
 <ng-container >
-  <div  *ngFor="let campaign of campaigns"  style="width: 20rem;" >
-    <div class="card-body campaignContainer"   id="campaign" >
-      <div class="card border border-secondary " style=" background-color: #0e2431;" >
+  <div class="d-flex flex-column align-items-stretch"  *ngFor="let campaign of campaigns"  style="width: 20rem;" >
+    <div class="card-body campaignContainer  d-flex  align-items-stretch  "   id="campaign" >
+      <div class="card border border-secondary w-100 d-flex flex-column " style=" background-color: #0e2431;" >
         <figure>
-          <a routerLink = '/campaign-detail/{{campaign.id}}'>
+          <a routerLink = '/campaign-detail/{{campaign.id}}' class="text-decoration-none" style="color: #ffc107">
           <h5 style="text-align:center" class="card-title">{{campaign.name}}</h5>
         </a>
-          <h6 class="card-title" style="text-align:center">Participants</h6>
+          <h6  class="card-title" style="text-align:center">Participants</h6>
           <div  *ngFor="let character of campaign.characters">
             <ul >
               <li >{{character.name}}</li>
             </ul>
           </div>
-          <a *ngIf="isLoggedIn()" routerLink = '/campaigns-characters/{{campaign.id}}'>
+          <a *ngIf="isLoggedIn()" routerLink = '/campaigns-characters/{{campaign.id}}' class="text-decoration-none" style="color: #ffc107">
           <h6 style="text-align:center" class="card-title">Add Characters</h6>
         </a>
         </figure>
         <div style="text-align:center">
-          <button style="margin:5px;" *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
-          <button style="margin:5px;"*ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i>Delete</button>
+          <button style="margin:5px;" *ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.EDIT)" class="btn btn-success btn-sm align-self-end mt-auto"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+          <button style="margin:5px;"*ngIf="isLoggedIn()" (click)="handleClick(campaign, Op.DELETE)" class="btn btn-danger btn-sm align-self-end mt-auto"><i class="fa-solid fa-trash"></i>Delete</button>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="col-4">
-    <h3 class="text-white">Edit/Add Campaign</h3>
-    <app-component-form
-    *ngIf="isLoggedIn()"
-    [campaignModel]="editedCampaign"
-    (campaignSubmitted)="handleCampaignSubmit($event)"
-  ></app-component-form>
-</div> -->
 </ng-container>
 </div>
 

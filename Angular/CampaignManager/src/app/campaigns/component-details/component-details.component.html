@@ -9,7 +9,7 @@
       type="text"
       id="dateStarted"
       name="dateStarted"
-      placeholder="{{campaign.dateStarted}}"
+      placeholder="{{ campaign.dateStarted | date:'shortDate' }}"
       class="form-control mb-3"
     />
   </div>
@@ -22,7 +22,7 @@
       type="text"
       id="dateEnded"
       name="dateEnded"
-      placeholder="{{campaign.dateEnded}}"
+      placeholder="{{campaign.dateEnded | date:'shortDate'}}"
       class="form-control mb-3"
     />
   </div>
