@@ -22,39 +22,6 @@ namespace Capstone.Web.Controllers
             _authRepository = authRepository;
         }
 
-        [HttpPost, Route("login")]
-        public IActionResult Login(LoginModel user)
-        {
-            if (user == null)
-            {
-                return BadRequest("Invalid request");
-            }
-
-            if (_authRepository.ValidateUserName(user.UserName, user.Password))
-            {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                var tokeOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:5001",
-                    audience: "http://localhost:5001",
-                    claims: new List<Claim>()
-                    {
-                        new Claim("fullName", "John Citizen")
-                    },
-                    expires: DateTime.Now.AddMinutes(30),
-                    signingCredentials: signinCredentials
-                );
-
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
-            }
-            else
-            {
-                return Unauthorized();
-            }
-        }
-
         [HttpPost, Route("login/{id}")]
         public IActionResult SetPlayerId(LoginModel user, int id)
         {
@@ -63,7 +30,7 @@ namespace Capstone.Web.Controllers
                 return BadRequest("Invalid request");
             }
 
-            if (_authRepository.ValidateUserName(user.UserName, user.Password))
+            if (_authRepository.ValidateUserName(user.UserName, user.Password, id)) //TODO: have this return a user, store in a variable and check against if null
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -73,7 +40,7 @@ namespace Capstone.Web.Controllers
                     audience: "http://localhost:5001",
                     claims: new List<Claim>()
                     {
-                        new Claim("fullName", "John Citizen"),
+                        new Claim("fullName", $"{user.UserName}"),
                         new Claim("playerId", id.ToString())
                     },
                     expires: DateTime.Now.AddMinutes(30),

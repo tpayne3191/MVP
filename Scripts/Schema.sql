@@ -88,3 +88,105 @@ CREATE TABLE CharacterWeapon(
    constraint pk_CharacterWeapon_CharacterId_WeaponId
         primary key(CharacterId, WeaponId)
 );
+
+
+Create Table [Login]
+(
+	Id Uniqueidentifier Primary Key,
+	UserName varchar (256) not null,
+	[Password] nvarchar (256) not null,
+	DateCreated date not null Default GetDate(),
+	PlayerId int null
+);
+
+
+Begin Tran
+Insert Into [Login] (UserName, [Password], Id) 
+Values 
+	('johncitizen',	PwdEncrypt('abc@123'), NewID()),
+	('ErnestKing',	PwdEncrypt('MySpecialPassword!23'), NewID())
+
+
+Select * From [Login]
+Commit;
+
+
+-- ================================================
+-- Template generated from Template Explorer using:
+-- Create Procedure (New Menu).SQL
+--
+-- Use the Specify Values for Template Parameters 
+-- command (Ctrl-Shift-M) to fill in the parameter 
+-- values below.
+--
+-- This block of comments will not be included in
+-- the definition of the procedure.
+-- ================================================
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Ernest
+-- Create date: 2022-October-17
+-- Description:	Verify User Login Information
+-- =============================================
+Use CampaignManager_DB;
+GO
+
+CREATE PROCEDURE LoginVerification
+	-- Add the parameters for the stored procedure here
+	@userId nvarchar (265),
+	@password nvarchar (256)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	SELECT
+		l.Id,
+		l.UserName,
+		l.DateCreated,
+		l.PlayerId
+	From [Login] As l
+	Where l.UserName = @userId
+		And PWDCOMPARE(@password, l.[Password]) = 1
+END
+GO
+
+CREATE PROCEDURE AddLogin
+	-- Add the parameters for the stored procedure here
+	@userId nvarchar (265),
+	@password nvarchar (256),
+	@playerId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Insert Into [Login] (UserName, [Password], Id, PlayerId)
+	Values 
+		(@userId,	PwdEncrypt(@password), NewID(), @playerId)
+END
+GO
+
+CREATE PROCEDURE DeleteLogin
+	-- Add the parameters for the stored procedure here
+	@userId nvarchar (265)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Delete From [Login]
+	Where UserName = @userId
+END
+GO
+
+Exec LoginVerification @userId = 'johncitizen', @password = 'abc@123';

@@ -48,6 +48,10 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Add(CharacterModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Character character = new Character
             {
                 Id = model.Id,
@@ -82,6 +86,10 @@ namespace Capstone.Web.Controllers
         [HttpPut]
         public IActionResult Edit(CharacterModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Data not valid");
+            }
             Character character = new Character()
             {
                 Name = model.Name,
