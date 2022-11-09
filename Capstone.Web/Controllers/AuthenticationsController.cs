@@ -30,7 +30,7 @@ namespace Capstone.Web.Controllers
                 return BadRequest("Invalid request");
             }
 
-            if (_authRepository.ValidateUserName(user.UserName, user.Password))
+            if (_authRepository.ValidateUserName(user.UserName, user.Password)) //TODO: have this return a user, store in a variable and check against if null
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -40,7 +40,8 @@ namespace Capstone.Web.Controllers
                     audience: "http://localhost:5001",
                     claims: new List<Claim>()
                     {
-                        new Claim("fullName", "John Citizen")
+                        new Claim("fullName", "John Citizen"), // TODO: replace john citizen with fullname of user
+                        // TODO: create a new claim "playerId", set to user's playerId
                     },
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: signinCredentials

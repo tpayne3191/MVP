@@ -35,7 +35,6 @@ export class AuthServiceService {
   public getUserName(): string {
     try {
       let token = jwt_decode(localStorage.getItem('id_token') || '') as any;
-      console.log('token: ', token);
       return token!.fullName;
     }
     catch (error) {
@@ -46,7 +45,6 @@ export class AuthServiceService {
   public getPlayerId(): number {
     try {
       let token = jwt_decode(localStorage.getItem('id_token') || '') as any;
-      console.log('token: ', token);
       return token!.playerId;
     }
     catch (error) {
