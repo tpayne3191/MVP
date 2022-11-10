@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { CharacterService } from 'src/app/services/character.service';
@@ -25,5 +26,9 @@ export class CharacterFormComponent implements OnInit {
 
   handleSubmit() {
     this.characterSubmitted.emit(this.characterModel);
+  }
+
+  resetForm(form: NgForm) {
+    form.resetForm();
   }
 }

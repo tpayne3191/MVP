@@ -1,6 +1,6 @@
 <div>
   <legend class="text-white mb-4">Modify / Create New</legend>
-  <form (ngSubmit)="handleSubmit()" *ngIf="weapons$ | async as weapons" class="text-white">
+  <form (ngSubmit)="handleSubmit()" *ngIf="weapons$ | async as weapons" class="text-white" #userForm="ngForm">
     <div>
       <label for="name">
           Weapon Name
@@ -52,6 +52,7 @@
       />
     </div>
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <button class ="btn btn-danger mt-3 ms-2" type="button" (click)="resetForm(userForm)">Reset</button>
   </form>
 </div>
 

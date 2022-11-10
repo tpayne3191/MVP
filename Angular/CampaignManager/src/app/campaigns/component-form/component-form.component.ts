@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CampaignService } from 'src/app/services/campaign.service';
 import Campaign from '../../types/campaign.model';
@@ -26,4 +27,7 @@ export class ComponentFormComponent implements OnInit {
     this.campaignSubmitted.emit(this.campaignModel);
   }
 
+  resetForm(form: NgForm) {
+    form.resetForm();
+  }
 }
