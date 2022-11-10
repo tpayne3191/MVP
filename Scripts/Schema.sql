@@ -101,10 +101,10 @@ Create Table [Login]
 
 
 Begin Tran
-Insert Into [Login] (UserName, [Password], Id) 
+Insert Into [Login] (UserName, [Password], Id, PlayerId) 
 Values 
-	('johncitizen',	PwdEncrypt('abc@123'), NewID()),
-	('ErnestKing',	PwdEncrypt('MySpecialPassword!23'), NewID())
+	('johncitizen',	PwdEncrypt('abc@123'), NewID(), 1),
+	('ErnestKing',	PwdEncrypt('MySpecialPassword!23'), NewID(), 2)
 
 
 Select * From [Login]
@@ -252,10 +252,4 @@ GO
 
 Exec LoginVerification @userId = 'johncitizen', @password = 'abc@123';
 
-Exec UpdateLogin
-	@loginId = 'D9632110-B0F5-4590-AE39-FC0B656499FE',
-	@userId = 'ErnestKing',
-	@password = 'MySpecialPassword!23',
-	@dateCreated = '2022-08-09',
-	@playerId = 2;
 Exec LoginVerification @userId = 'ErnestKing', @password = 'MySpecialPassword!23';
