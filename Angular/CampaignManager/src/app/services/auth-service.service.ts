@@ -18,8 +18,8 @@ export class AuthServiceService {
     }))
   }
 
-  loginPlayerId(userName: string, password: string, playerId: number) {
-    return this.http.post<User>(this.url + '/' + `${playerId}`, { userName, password }).pipe(tap(res => {
+  loginPlayerId(userName: string, password: string) {
+    return this.http.post<User>(this.url, { userName, password }).pipe(tap(res => {
       this.setSession(res);
     }))
   }

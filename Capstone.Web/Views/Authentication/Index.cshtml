@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Capstone.Core.Entities.LoginItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="text-white">Index</h1>
+
+<p class="text-decoration-none" style="color: #ffc107">
+    <a class="btn btn-primary" asp-action="Add">Add Login</a>
+</p>
+<table class="table table-striped text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlayerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerId)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Update", new { id = item.Id }, new {@class="btn btn-primary"}) |
+                    @Html.ActionLink("Details", "Get", new { id = item.Id }, new {@class="btn btn-primary"}) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new {@class="btn btn-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -22,6 +22,7 @@ export class AppComponent {
 
   getPlayerId() {
     const playerId = this.authServiceService.getPlayerId();
+    return playerId;
   }
 
   getUsername(): string {
