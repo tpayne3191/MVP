@@ -1,4 +1,4 @@
-<form (ngSubmit)="handleSubmit()" *ngIf="characters$ | async as characters">
+<form (ngSubmit)="handleSubmit()" *ngIf="characters$ | async as characters" #userForm="ngForm">
     <fieldset class="field_set">
       <legend class="mb-4">Edit / Add Character</legend>
       <!-- ---------------------------------------- About ---------------------------------------- -->
@@ -187,6 +187,7 @@
         </div>
         
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    <button class ="btn btn-danger mt-3 ms-2" type="button" (click)="resetForm(userForm)">Reset</button>
     </fieldset>
   </form>
   

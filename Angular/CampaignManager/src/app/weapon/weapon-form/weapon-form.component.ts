@@ -3,6 +3,7 @@ import { Operation } from '../../types/operation.model';
 import { Observable } from 'rxjs';
 import { WeaponService } from 'src/app/services/weapon.service';
 import Weapon from 'src/app/types/weapon.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-weapon-form',
@@ -24,5 +25,9 @@ export class WeaponFormComponent implements OnInit {
 
   handleSubmit() {
     this.weaponSubmitted.emit(this.weaponModel);
+  }
+
+  resetForm(form: NgForm) {
+    form.resetForm();
   }
 }
