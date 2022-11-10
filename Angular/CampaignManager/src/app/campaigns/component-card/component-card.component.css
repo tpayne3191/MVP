@@ -16,3 +16,6 @@ figcaption {
   margin: 8px 0;
   text-align: center;
 }
+.card{
+  filter: drop-shadow(5px 5px 4px #bc2525);
+}

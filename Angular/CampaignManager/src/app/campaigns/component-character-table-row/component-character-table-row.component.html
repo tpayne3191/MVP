@@ -1,0 +1,3 @@
+<td>{{ character.name }}</td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.EDIT)" class="btn btn-success btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
+<td><button *ngIf="isLoggedIn()" (click)="handleClick(Op.DELETE)" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button></td>

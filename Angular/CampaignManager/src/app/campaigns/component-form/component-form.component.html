@@ -1,4 +1,17 @@
-<form (ngSubmit)="handleSubmit()" *ngIf="campaigns$ | async as campaigns">
+<form class ="w-700" (ngSubmit)="handleSubmit()" *ngIf="campaigns$ | async as campaigns">
+  <div class="text-white">
+    <label for="price"><strong>
+      Campaign Name
+    </strong></label>
+    <input
+      type="text"
+      id="Name"
+      name="Name"
+      [(ngModel)]="campaignModel.name"
+      class="form-control mb-3"
+    />
+  </div>
+
   <div class="text-white">
     <label for="startDate">
       <strong>
@@ -24,19 +37,6 @@
       type="text"
       id="campaignStartDate"
       name="campaignStartDate"
-      class="form-control mb-3"
-    />
-  </div>
-
-  <div class="text-white">
-    <label for="price"><strong>
-      Campaign Name
-    </strong></label>
-    <input
-      type="text"
-      id="Name"
-      name="Name"
-      [(ngModel)]="campaignModel.name"
       class="form-control mb-3"
     />
   </div>

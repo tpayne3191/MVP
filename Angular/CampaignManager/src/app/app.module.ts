@@ -31,7 +31,7 @@ import { CharacterTableRowComponent } from './character/character-table-row/char
 import { CharacterDetailsComponent } from './character/character-details/character-details.component';
 import { CharacterFormComponent } from './character/character-form/character-form.component';
 import { CampaignsCharactersComponent } from './campaigns/campaigns-characters/campaigns-characters.component';
-
+import {ComponentCharacterTableComponent } from './campaigns/component-character-table/component-character-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +57,8 @@ import { CampaignsCharactersComponent } from './campaigns/campaigns-characters/c
     CharacterTableRowComponent,
     CharacterDetailsComponent,
     CharacterFormComponent,
-    CampaignsCharactersComponent
+    CampaignsCharactersComponent,
+    ComponentCharacterTableComponent
   ],
   imports: [
     BrowserModule,

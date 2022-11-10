@@ -9,6 +9,7 @@
         </a>
         <div class="card-title" style="text-align:center" *ngIf="campaign.characters.length > 0; else elseBlock">Participants</div>
           <ng-template #elseBlock ><p style="text-align:center; color:#bc2525">No Participants</p></ng-template>
+          <!-- <div class="card-title" style="text-align:center" *ngIf="campaign.dateEnded == null; else elseBlock"><small>In Progress</small> </div> -->
           <div  *ngFor="let character of campaign.characters">
             <ul >
               <li >{{character.name}}</li>

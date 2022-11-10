@@ -1,6 +1,19 @@
 <form class = "col-4">
   <fieldset  disabled>
     <legend class="text-white">Campaign Details</legend>
+    <div>
+      <label class="text-white" for="name">
+        Campaign Name
+      </label>
+      <input
+        type="text"
+        id="campaignName"
+        name="campaignName"
+        placeholder="{{campaign.name}}"
+        class="form-control mb-3"
+      />
+    </div>
+
   <div >
     <label class="text-white" for="date">
         Date Started
@@ -27,23 +40,10 @@
     />
   </div>
 
-  <div>
-    <label class="text-white" for="name">
-      Campaign Name
-    </label>
-    <input
-      type="text"
-      id="campaignName"
-      name="campaignName"
-      placeholder="{{campaign.name}}"
-      class="form-control mb-3"
-    />
-  </div>
-
   <div>Players Characters link needed</div>
 </fieldset>
-<button (click)="goBack()" class="btn btn-primary">Back</button>
+<!-- <button (click)="goBack()" class="btn btn-primary">Back</button> -->
 </form>
 
-
-
+<app-component-character-table>
+</app-component-character-table>
