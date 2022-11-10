@@ -49,7 +49,7 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpPost]
-        [Route("[controller]/update/{id}")]
+        [Route("[controller]/update")]
         public IActionResult Update(LoginItem model)
         {
             var agency = _authRepository.Update(model);
@@ -116,7 +116,7 @@ namespace Capstone.Web.Controllers
         }
 
         [Route("[controller]/NotFound")]
-        public ViewResult NotFound()
+        public IActionResult NotFound()
         {
             Response.StatusCode = 404;  //you may want to set this to 200
             return View("NotFound");

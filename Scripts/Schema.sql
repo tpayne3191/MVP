@@ -170,7 +170,7 @@ BEGIN
     -- Insert statements for procedure here
 	Insert Into [Login] (UserName, [Password], Id, PlayerId)
 	Values 
-		(@userId,	PwdEncrypt(@password), NewID(), @playerId)
+		(@userId, PwdEncrypt(@password), NewID(), @playerId)
 END
 GO
 
@@ -208,4 +208,54 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE ReadLoginById
+	-- Add the parameters for the stored procedure here
+	@loginId Uniqueidentifier
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select 
+		l.Id,
+		l.userName,
+		l.[password], 
+		l.DateCreated, 
+		l.playerId 
+	From [Login] As l 
+	Where l.Id = @loginId
+END
+GO
+
+CREATE PROCEDURE UpdateLogin
+	-- Add the parameters for the stored procedure here
+	@loginId Uniqueidentifier,
+	@userId nvarchar (265),
+	@password nvarchar (256),
+	@dateCreated date,
+	@playerId int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Update [Login]
+	Set UserName = @userId, [Password] = PwdEncrypt(@password), DateCreated = @dateCreated, PlayerId = @playerId
+	Where Id = @loginId
+END
+GO
+
+
 Exec LoginVerification @userId = 'johncitizen', @password = 'abc@123';
+
+Exec UpdateLogin
+	@loginId = 'D9632110-B0F5-4590-AE39-FC0B656499FE',
+	@userId = 'ErnestKing',
+	@password = 'MySpecialPassword!23',
+	@dateCreated = '2022-08-09',
+	@playerId = 2;
+Exec LoginVerification @userId = 'ErnestKing', @password = 'MySpecialPassword!23';
