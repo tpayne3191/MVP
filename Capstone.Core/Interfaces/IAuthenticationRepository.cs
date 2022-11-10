@@ -9,8 +9,9 @@ namespace Capstone.Core.Interfaces
     {
         public Result<LoginItem> Create(LoginItem loginItem);
         public Result<LoginItem> Update(LoginItem loginItem);
-        public Result Delete(string loginItemUserId);
-        public Result<LoginItem> Get(string loginItemUserId);
-        public bool ValidateUserName(string userId, string password, int playerId);
+        public Result Delete(Guid loginItemUserId);
+        public Result<LoginItem> Get(Guid loginItemUserId);
+        public Result<List<LoginItem>> GetAll();
+        public Result<LoginItem> ValidateUserName(string userId, string password);
     }
 }

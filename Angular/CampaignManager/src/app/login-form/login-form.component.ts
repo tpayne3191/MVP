@@ -28,7 +28,7 @@ export class LoginFormComponent implements OnInit {
 
   handleSubmit() {
     try {
-      this.authService.loginPlayerId(this.user.userName, this.user.password, this.playerId).subscribe(
+      this.authService.loginPlayerId(this.user.userName, this.user.password).subscribe(
         res => this.router.navigateByUrl('/'),
         err => {
           alert('username and/or password is incorrect');

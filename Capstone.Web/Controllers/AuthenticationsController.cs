@@ -22,15 +22,17 @@ namespace Capstone.Web.Controllers
             _authRepository = authRepository;
         }
 
-        [HttpPost, Route("login/{id}")]
-        public IActionResult SetPlayerId(LoginModel user, int id)
+        [HttpPost, Route("login")]
+        public IActionResult SetPlayerId(LoginModel user)
         {
             if (user == null)
             {
                 return BadRequest("Invalid request");
             }
 
-            if (_authRepository.ValidateUserName(user.UserName, user.Password, id)) //TODO: have this return a user, store in a variable and check against if null
+            var loginResult = _authRepository.ValidateUserName(user.UserName, user.Password);
+
+            if (loginResult.Success) //TODO: have this return a user, store in a variable and check against if null
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -41,7 +43,7 @@ namespace Capstone.Web.Controllers
                     claims: new List<Claim>()
                     {
                         new Claim("fullName", $"{user.UserName}"),
-                        new Claim("playerId", id.ToString())
+                        new Claim("playerId", loginResult.Data.PlayerId.ToString())
                     },
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: signinCredentials
